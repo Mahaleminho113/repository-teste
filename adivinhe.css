@@ -1,0 +1,24 @@
+.text {
+    color: blue;
+}
+button{
+    background-color: red;
+}
+
+.test1{
+    background-color: blue;
+}
+#test2{
+    background-color: aquamarine;
+}
+
+/* Prioridades */
+/* tag{
+
+}
+.classe{
+
+}
+#id{
+
+} */

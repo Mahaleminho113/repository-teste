@@ -91,12 +91,13 @@ const text =document.querySelector('.text')
 
 button1.addEventListener('click',function(){
      
-    const secretoArray1 = "[6]"
-    const secretoObjeto1 = "?"
-    const secretoArray2 = "?"
-    const secretoObjeto2= "?"
-    
-   console.log(secretoArray1)
+    //const secretoArray1 =([3]) 
+    //const secretoObjeto1 =(objeto1.but) 
+   // const secretoArray2 = ([3].objeto)
+     const secretoObjeto2 = (objeto2.but[3]) 
+
+   console.log(secretoObjeto2.objeto2.but[3]) 
+   
 // const numeroSecreto=6
 // if(input.value>secretoArray1){
 // text.textContent='o numero secreto é menor'

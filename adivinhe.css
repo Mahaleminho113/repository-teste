@@ -1,15 +1,61 @@
-.text {
-    color: blue;
+@keyframes blinking {
+    0% {
+      background-color: #06c3d1;
+      border: 3px solid #666;
+    }
+    100% {
+      background-color: red;
+      border: 3px solid blue;
+    }
+  }
+  #blink {
+    animation: blinking 1s infinite;
+  }
+  
+
+body{
+    background-color:cornsilk;
 }
-button{
-    background-color: red;
+h1{
+    text-align: center;
+    color:black;
 }
 
-.test1{
-    background-color: blue;
+.text {
+    color: black;
+    font-size: 25px;
+    text-align: center;
 }
-#test2{
-    background-color: aquamarine;
+ 
+button{
+    height: 20px;
+    width: 100px;
+   position: absolute;
+    background-color: red;
+    text-align: center;
+}
+
+.button{
+    padding-left:0%;
+    padding-top: 3%;
+    
+}
+
+input{
+ position: relative;
+    height: 50px;
+    width: 100px;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    font-size: 50px;
+}
+.input{
+    position: relative;
+    padding: auto;
+    width: auto;
+    height: auto;
+    padding-left: 45%;
 }
 
 /* Prioridades */

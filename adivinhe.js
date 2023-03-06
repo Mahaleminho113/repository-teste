@@ -84,11 +84,9 @@ const objeto2 = {
     v21:'',
     top: '',
 }
-
-const button1=document.querySelector('.test1')
+const button1=document.querySelector('.button1')
 const input=document.querySelector('.input1')
 const text =document.querySelector('.text')
-
 button1.addEventListener('click',function(){
      
     const secretoArray1 = (array1[3])
@@ -99,14 +97,14 @@ button1.addEventListener('click',function(){
    console.log(secretoArray2) 
    
 // const numeroSecreto=6
-// if(input.value>secretoArray1){
-// text.textContent='o numero secreto é menor'
-// }
-// else if(input.value==secretoArray1){
-//     alert('voce é pika')
-// }
-//  else{
-//     text.textContent='o numero secreto e maior'
-//  }
+if(input.value>secretoArray1){
+ text.textContent='O Número Secreto é menor'
+ }
+ else if(input.value==secretoArray1){
+     alert('Parabéns! Você Acertou!')
+ }
+  else{
+     text.textContent='O Número Secreto é maior'
+  }
 
 })

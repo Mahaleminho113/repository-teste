@@ -108,3 +108,44 @@ if(input.value>secretoArray1){
   }
 
 })
+
+const array3 = ['','','',35,'']
+const objeto3 = {
+   va1: '',
+    but: 35,
+    va2: '',
+    v21:'',
+    top: '',
+}
+const array4 = ['','','',{objeto: 35},'']
+const objeto4 = {
+   va1: '',
+    but: ['','','',35,''],
+    va2: '',
+    v21:'',
+    top: '',
+}
+const button2=document.querySelector('.button2')
+const input2=document.querySelector('.input2')
+const text2 =document.querySelector('.text2')
+button2.addEventListener('click',function(){
+     
+    const secretoArray3 = (array3[3])
+    const secretoObjeto3 =(objeto3.but) 
+    const secretoArray4 = (array4[3].objeto)
+    const secretoObjeto4 = (objeto4.but[3]) 
+
+  // console.log(secretoArray2) 
+   
+// const numeroSecreto=6
+if(input2.value>secretoArray3){
+ text2.textContent='O Número Secreto é menor'
+ }
+ else if(input2.value==secretoArray3){
+     alert('Parabéns! Você Acertou!')
+ }
+  else{
+     text2.textContent='O Número Secreto é maior'
+  }
+
+})

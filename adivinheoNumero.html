@@ -1,35 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="adivinhe.css"/>
-<title>Adivinhne o Número</title>
-    </head>
-    <body>
-       <div clas="nivelfacil">
-        <h1 class="facil">Nível Fácil</h1>
-        <h2 class="tituloh1"><i><n>Adivinhe o Número entre 0 e 9</i></n></h2>
-        <div class="input">
-            <input class="input1" type="text" maxlength="1">
-         <div class="button">
-            <button class="button1" id="blink">Adivinhar</button>
-            </div>
-        </div>
-            <p class="text"></p>
-        </div>
-        <div class="nivelmedio">
-            <h1 class="dificil">Nível Dificil</h1>
-            <h2><i><n>Adivinhe o Número entre 0 e 100</i></n></h2>
-            <div class="input">
-                <input class="input2" type="text" maxlength="3">
-             <div class="button">
-                <button class="button2" id="blink">Adivinhar</button>
-                </div>
-            </div>
-                <p class="text2"></p>
-            </div>
-        <script src="./adivinhe.js">
-            
-        </script>
-    </body>
+  <head>
+    <link rel="stylesheet" href="adivinhe.css" />
+    <title>Adivinhne o Número</title>
+  </head>
+  <body>
+    <div class="nivelfacil">
+      <h1 class="facil">Nível Fácil</h1>
+      <p class="tentativas"></p>
+      <h2 class="tituloh1">Adivinhe o Número entre 0 e 9</h2>
+      <div class="div_input_button">
+        <input class="input1" type="text" maxlength="1" />
+        <button class="button1">Adivinhar</button>
+        <button class="button1" id="buttonReiniciar">Reiniciar</button>
+      </div>
+      <p class="text"></p>
+    </div>
 
+    <script src="./adivinhe.js"></script>
+  </body>
 </html>

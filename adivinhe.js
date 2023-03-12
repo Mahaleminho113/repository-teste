@@ -100,19 +100,23 @@ buttonReiniciar.addEventListener("click", function () {
   arrayTentativa.length = 0;
   contadorTentativa = 3;
   tentativas.textContent = "Tentativas: " + contadorTentativa;
+  input.value = "";
 });
 button1.addEventListener("click", function () {
   const secretoArray1 = array1[3]; // igual 6 do array
-
   arrayTentativa.push(input.value);
   //   contadorTentativa = contadorTentativa - 1;
   //   contadorTentativa -= 1;
-  contadorTentativa--;
-  tentativas.textContent = "Tentativas: " + contadorTentativa;
-  console.log("Tentativas: " + contadorTentativa);
 
-  console.log("tamanho do array: " + arrayTentativa.length); // imprimindo tamanho
-  console.log("arrayTentativa: " + arrayTentativa); // imprimindo array
+  if (contadorTentativa > 0) {
+    contadorTentativa--;
+    tentativas.textContent = "Tentativas: " + contadorTentativa;
+  }
+
+  // console.log("Tentativas: " + contadorTentativa);
+
+  //console.log("tamanho do array: " + arrayTentativa.length); // imprimindo tamanho
+  // console.log("arrayTentativa: " + arrayTentativa); // imprimindo array
   if (arrayTentativa.length >= 3) {
     alert("muitas tentativas");
     text.textContent = "";
@@ -125,6 +129,8 @@ button1.addEventListener("click", function () {
       text.textContent = "O Número Secreto é maior";
     }
   }
+
+  input.value = "";
 
   //   const secretoObjeto1 = objeto1.but;
   //   const secretoArray2 = array2[3].objeto;
@@ -170,3 +176,9 @@ button1.addEventListener("click", function () {
 //     text2.textContent = "O Número Secreto é maior";
 //   }
 // });
+// atividades
+// evento keydown
+// evento keyup
+// evento keypress
+//só aceitar de 0 a 9
+//link https://www.freecodecamp.org/portuguese/learn/javascript-algorithms-and-data-structures/#es6

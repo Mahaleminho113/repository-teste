@@ -88,8 +88,32 @@ const input = document.querySelector(".input1");
 const text = document.querySelector(".text");
 const buttonReiniciar = document.getElementById("buttonReiniciar");
 const tentativas = document.querySelector(".tentativas");
-const letras = "a";
-console.log(letras);
+const letraA = "a";
+const letraB = "b";
+const letraC = "c";
+const letraD = "d";
+const letraE = "e";
+const letraF = "f";
+const letraG = "g";
+const letraH = "h";
+const letraI = "i";
+const letraJ = "j";
+const letraK = "k";
+const letraL = "l";
+const letraM = "m";
+const letraN = "n";
+const letraO = "o";
+const letraP = "p";
+const letraQ = "q";
+const letraR = "r";
+const letraS = "s";
+const letraT = "t";
+const letraU = "u";
+const letraV = "v";
+const letraW = "w";
+const letraX = "x";
+const letraY = "y";
+const letraZ = "z";
 
 //
 // const arrayFrutas = ["maca", "banana"];
@@ -108,7 +132,6 @@ buttonReiniciar.addEventListener("click", function () {
 button1.addEventListener("click", function () {
   const secretoArray1 = array1[3]; // igual 6 do array
   arrayTentativa.push(input.value);
-
   //   contadorTentativa = contadorTentativa - 1;
   //   contadorTentativa -= 1;
 
@@ -126,20 +149,194 @@ button1.addEventListener("click", function () {
     alert("muitas tentativas");
     text.textContent = "";
   } else {
-    if (input.value == letras) {
-      alert("Apenas Numeros");
+    if (input.value > secretoArray1) {
+      text.textContent = "O Número Secreto é menor";
+    } else if (input.value == secretoArray1) {
+      alert("Parabéns! Você Acertou!");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
     } else {
-      if (input.value > secretoArray1) {
-        text.textContent = "O Número Secreto é menor";
-      } else if (input.value == secretoArray1) {
-        alert("Parabéns! Você Acertou!");
-        arrayTentativa.length = 0;
-        contadorTentativa = 3;
-        tentativas.textContent = "Tentativas: " + contadorTentativa;
-        input.value = "";
-      } else {
-        text.textContent = "O Número Secreto é maior";
-      }
+      text.textContent = "O Número Secreto é maior";
+    }
+    if (input.value == letraA) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraB) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraC) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraD) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraE) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraF) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraG) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraH) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraI) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraJ) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraK) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraL) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraM) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraN) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraO) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraP) {
+      alert("apenas numeros");
+    }
+    if (input.value == letraQ) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraR) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraS) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraT) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraU) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraV) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraW) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraX) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraY) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
+    }
+    if (input.value == letraZ) {
+      alert("apenas numeros");
+      arrayTentativa.length = 0;
+      contadorTentativa = 3;
+      tentativas.textContent = "Tentativas: " + contadorTentativa;
+      input.value = "";
     }
   }
 

@@ -88,7 +88,7 @@ const input = document.querySelector(".input1");
 const text = document.querySelector(".text");
 const buttonReiniciar = document.getElementById("buttonReiniciar");
 const tentativas = document.querySelector(".tentativas");
-const letraA = "a";
+/*const letraA = "a";
 const letraB = "b";
 const letraC = "c";
 const letraD = "d";
@@ -114,7 +114,8 @@ const letraW = "w";
 const letraX = "x";
 const letraY = "y";
 const letraZ = "z";
-
+*/
+const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //
 // const arrayFrutas = ["maca", "banana"];
 // arrayFrutas.push("laranja");
@@ -149,18 +150,33 @@ button1.addEventListener("click", function () {
     alert("muitas tentativas");
     text.textContent = "";
   } else {
-    if (input.value > secretoArray1) {
-      text.textContent = "O Número Secreto é menor";
-    } else if (input.value == secretoArray1) {
-      alert("Parabéns! Você Acertou!");
+    if (letras.indexOf(input.value) != -1) {
+      alert("apenas numeros");
       arrayTentativa.length = 0;
       contadorTentativa = 3;
       tentativas.textContent = "Tentativas: " + contadorTentativa;
       input.value = "";
     } else {
-      text.textContent = "O Número Secreto é maior";
+      if (input.value > secretoArray1) {
+        text.textContent = "O Número Secreto é menor";
+      } else if (input.value == secretoArray1) {
+        alert("Parabéns! Você Acertou!");
+        arrayTentativa.length = 0;
+        contadorTentativa = 3;
+        tentativas.textContent = "Tentativas: " + contadorTentativa;
+        input.value = "";
+      } else {
+        text.textContent = "O Número Secreto é maior";
+      }
+      if (letras.indexOf(input.value) != -1) {
+        alert("apenas numeros");
+        arrayTentativa.length = 0;
+        contadorTentativa = 3;
+        tentativas.textContent = "Tentativas: " + contadorTentativa;
+        input.value = "";
+      }
     }
-    if (input.value == letraA) {
+    /* if (input.value == letraA) {
       alert("apenas numeros");
       arrayTentativa.length = 0;
       contadorTentativa = 3;
@@ -337,7 +353,7 @@ button1.addEventListener("click", function () {
       contadorTentativa = 3;
       tentativas.textContent = "Tentativas: " + contadorTentativa;
       input.value = "";
-    }
+    }*/
   }
 
   input.value = "";

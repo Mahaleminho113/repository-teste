@@ -88,6 +88,9 @@ const input = document.querySelector(".input1");
 const text = document.querySelector(".text");
 const buttonReiniciar = document.getElementById("buttonReiniciar");
 const tentativas = document.querySelector(".tentativas");
+const letras = "a";
+console.log(letras);
+
 //
 // const arrayFrutas = ["maca", "banana"];
 // arrayFrutas.push("laranja");
@@ -105,6 +108,7 @@ buttonReiniciar.addEventListener("click", function () {
 button1.addEventListener("click", function () {
   const secretoArray1 = array1[3]; // igual 6 do array
   arrayTentativa.push(input.value);
+
   //   contadorTentativa = contadorTentativa - 1;
   //   contadorTentativa -= 1;
 
@@ -117,16 +121,25 @@ button1.addEventListener("click", function () {
 
   //console.log("tamanho do array: " + arrayTentativa.length); // imprimindo tamanho
   // console.log("arrayTentativa: " + arrayTentativa); // imprimindo array
+
   if (arrayTentativa.length >= 3) {
     alert("muitas tentativas");
     text.textContent = "";
   } else {
-    if (input.value > secretoArray1) {
-      text.textContent = "O Número Secreto é menor";
-    } else if (input.value == secretoArray1) {
-      alert("Parabéns! Você Acertou!");
+    if (input.value == letras) {
+      alert("Apenas Numeros");
     } else {
-      text.textContent = "O Número Secreto é maior";
+      if (input.value > secretoArray1) {
+        text.textContent = "O Número Secreto é menor";
+      } else if (input.value == secretoArray1) {
+        alert("Parabéns! Você Acertou!");
+        arrayTentativa.length = 0;
+        contadorTentativa = 3;
+        tentativas.textContent = "Tentativas: " + contadorTentativa;
+        input.value = "";
+      } else {
+        text.textContent = "O Número Secreto é maior";
+      }
     }
   }
 

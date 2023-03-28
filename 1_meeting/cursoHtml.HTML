@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu curso Html</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <!---Navegação-->
+    <nav class="navigation">
+        <div class="navigation-inner">
+            <img id="logo">
+            <div class="main-navigation">
+                <ul class="main-navigation-ul">
+                    <li><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                </ul>
+            </div>
+            <div id="btnBurguer" class="burger-container" onclick="menuFn(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <script>
+                function menuFn(x) {
+                    x.classList.toggle("change");
+                }
+            </script>
+        </div>
+   </nav>
+<script src="js/jquery-3.6.3.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('.burger-container').on('click',function() {
+            $('.main-navigation').toggle('slow');
+        })
+
+      })
+    </script>
+   </body>
+</html>

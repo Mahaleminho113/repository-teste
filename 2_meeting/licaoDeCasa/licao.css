@@ -1,0 +1,40 @@
+input {
+  width: 150px;
+}
+input:hover {
+  background-color: aqua;
+  color: red;
+}
+
+.inputbuttonInserir {
+  display: flex;
+  gap: 15px;
+  align-content: center;
+}
+.divValorInserido {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 500px;
+  height: auto;
+}
+button:hover {
+  background-color: darkgray;
+  color: darkmagenta;
+}
+#buttonGerarLista {
+  height: auto;
+  width: 150px;
+}
+.divLista {
+  display: flex;
+  flex-direction: column;
+  line-height: 1px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 500px;
+  height: auto;
+}

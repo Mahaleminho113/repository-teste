@@ -1,0 +1,22 @@
+body {
+  background-color: aqua;
+}
+.style1 {
+  background-color: red;
+  border: 1px double black;
+}
+.style2 {
+  color: blueviolet;
+}
+
+.style2:hover {
+  color: rgb(86, 226, 43);
+}
+.telaPrincipal {
+  border: 10px double black;
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* gap: 100px; */
+}

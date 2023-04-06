@@ -1,11 +1,22 @@
+/* Elementos tag */
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
 input {
   width: 150px;
 }
 input:hover {
-  background-color: aqua;
-  color: red;
+  background-color: black;
+  color: white;
 }
-
+button:hover {
+  background-color: darkgray;
+  color: darkmagenta;
+}
+/* Container que tem input e button para inserir palavras */
 .inputbuttonInserir {
   display: flex;
   gap: 15px;
@@ -13,25 +24,34 @@ input:hover {
 }
 .divValorInserido {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  align-content: center;
   line-height: 1px;
   border: 1px solid black;
   border-radius: 20px;
   width: 500px;
   height: auto;
 }
-button:hover {
-  background-color: darkgray;
-  color: darkmagenta;
+
+#img {
+  width: 150px;
+  height: 150px;
+  align-self: flex-start;
+  border-radius: 20px;
 }
+
 #buttonGerarLista {
   height: auto;
   width: 150px;
 }
+
 .divLista {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   line-height: 1px;
   border: 1px solid black;
   border-radius: 20px;

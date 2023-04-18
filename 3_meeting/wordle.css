@@ -21,7 +21,6 @@ body {
   flex-direction: column;
   border-top: 10px solid rgb(237, 232, 227);
 }
-
 .caixa {
   margin: 2px;
   display: flex;

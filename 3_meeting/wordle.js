@@ -1,51 +1,176 @@
+// variaveis ------------
 const game = document.querySelector("#game");
 const line0 = document.querySelector(".line0");
-
-// const objTeclado = {
-//   linha1: "qwertyuiop",
-//   linha2: "asdfghjkl",
-//   linha3: "zxcvbnm",
-//   linha4: ["Del", "Enter"],
-// };
 const arrayTeclado = ["qwertyuiop", "asdfghjkl", "zxcvbnm", ["Del", "Enter"]];
+let linhaAtual = 0;
+
+// ["Del", "Enter"];
+//game ---------------
+//loop para criar as linhas -----------
 for (let countLinha = 0; countLinha < 6; countLinha++) {
+  //criando div linha--------------
   let linha = document.createElement("div");
+  //class para div linha-----------
   linha.className = "linha";
+  //loop para criar coluna-----------
   for (let countColuna = 0; countColuna < 5; countColuna++) {
-    let caixa = document.createElement("input");
+    //criando div caixa--------
+    let caixa = document.createElement("div");
+    //class div Caixa---------
     caixa.className = "caixa";
-    caixa.textContent = "j";
+    //adicionando caixa dentro das linhas-----
     linha.appendChild(caixa);
   }
+  //adicionando as linhas dentro do Game---
   game.appendChild(linha);
 }
-
-// for (let caixaLine0 = 0; caixaLine0 < 11; caixaLine0++) {
-//   let caixa0 = document.createElement("div");
-//   caixa0.className = "caixaLine0";
-//   caixa0.textContent = "j";
-//   line0.appendChild(ca);
-// }
+//variavel linha------
+const linhas = document.querySelectorAll(".linha");
+//teclado ------------
+// loop para linha do teclado
 for (
   let countLinhaTeclado = 0;
   countLinhaTeclado < arrayTeclado.length;
   countLinhaTeclado++
 ) {
+  //criando div linha teclado-----
   let linha = document.createElement("div");
+  // class para linha teclado----
   linha.className = "linhaTeclado";
-
+  // loop para caixas do teclado
   for (
     let countCaixaTeclado = 0;
     countCaixaTeclado < arrayTeclado[countLinhaTeclado].length;
     countCaixaTeclado++
   ) {
+    //criando button caixa teclado----
     let caixa = document.createElement("button");
+    //class caixa do teclado-------
     caixa.className = "caixaTeclado";
+    //adicionando letras do array na caixa do teclado -----
     caixa.textContent = arrayTeclado[countLinhaTeclado][countCaixaTeclado];
+
+    // //adicionando evento ao button caixa do teclado---
+    caixa.addEventListener("click", function () {
+      //   //condição para button Enter ----
+
+      if (caixa.textContent == "Enter") {
+        linhaAtual++;
+      }
+      //  //condiçao para button Del -----
+      else if (caixa.textContent == "Del") {
+        //     //loop para pular para deletar ----
+        for (let y = 4; y >= 0; y--) {
+          //       //condiçoes para o loop
+          if (linhas[linhaAtual].children[y].textContent !== "") {
+            linhas[linhaAtual].children[y].textContent = "";
+            break;
+          }
+        }
+      } else {
+        let x = 0;
+        //achando a coluna/caixa vazia--------
+        while (x < 5 && linhas[linhaAtual].children[x].textContent !== "") {
+          x++;
+        }
+
+        if (x < 5) {
+          linhas[linhaAtual].children[x].textContent = caixa.textContent;
+        }
+      }
+    });
+    //adicionando div caixa na linha------
     linha.appendChild(caixa);
-    // if (countLinhaTeclado == 3 && countCaixaTeclado == 1) {
-    //   break;
-    // }
   }
+  //adicionando as linhas no teclado --
   teclado.appendChild(linha);
 }
+
+//teste 1
+//[div.linha, div.linha, div.linha, div.linha, div.linha, div.linha]
+// linhas[5].children[3].textContent = "a";
+
+// console.log(linhas);
+
+//teste 2
+// const linhasTeste = document.querySelector(".linha");
+// console.log(linhasTeste.children[4].textContent);
+
+//
+//
+//
+//
+//
+// controlando array com loop
+//
+//
+//
+//
+//
+//
+// const a = [
+//   "a1",
+//   "b1",
+//   "c1",
+//   "d1",
+//   [
+//     "a2",
+//     "b2",
+//     "c2",
+//     "d2",
+//     ["a3", "b3", "c3", "d3", ["1", "2", "3", "4", "5", "6", "7"]],
+//   ],
+// ];
+
+// // console.log(a[0]);
+// // console.log(a[1]);
+// // console.log(a[2]);
+// // console.log(a[3]);
+// // console.log(a[4][0]);
+// // console.log(a[4][1]);
+// // console.log(a[4][2]);
+// // console.log(a[4][3]);
+// // console.log(a[4][4][0]);
+// // console.log(a[4][4][1]);
+// // console.log(a[4][4][2]);
+// // console.log(a[4][4][3]);
+// // console.log(a[4][4][4][0]);
+// // console.log(a[4][4][4][1]);
+// // console.log(a[4][4][4][2]);
+// // console.log(a[4][4][4][3]);
+// // console.log(a[4][4][4][4]);
+// // console.log(a[4][4][4][5]);
+// // console.log(a[4][4][4][6]);
+// // for (let b = 0; b < a.length; b++) {
+// //   //   console.log(a[b]);
+// //   for (let c = 0; c < a[4].length; c++) {
+// //     // console.log(a[4][c]);
+
+// //     for (let d = 0; d < a[4][4].length; d++) {
+// //       // console.log(a[4][4][d]);
+// //       for (let e = 0; e < a[4][4][4].length; e++) {
+// //         console.log(a[b][c][d][e]);
+// //       }
+// //     }
+// //   }
+// // }
+
+// for (x = 1; x < 5; x++) {
+//   for (y = 1; y < 5; y++) {
+//     console.log("x=" + x + ", y=" + y + ", x*y = " + x + "*" + y + " " + x * y);
+//     // console.log(
+//     //   `valorX= ${x}, valorY= ${y} , valorX*valorY =  ${x} * ${y} = ${x * y}`
+//     // );
+//   }
+//   // x++;
+// }
+
+// /*
+// x=1, y=1, x*y = 1*1 = 1
+// x=1, y=2, x*y = 1*2 = 2
+// x=1, y=3, x*y = 1*3 = 3
+// x=1, y=4, x*y= 1*4 = 4
+
+// x=2, y=1, x*y = 2*1 = 2
+
+// */

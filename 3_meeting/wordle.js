@@ -71,7 +71,9 @@ for (
     // //adicionando evento ao button caixa do teclado---
     caixa.addEventListener("click", function () {
       //   //condição para button Enter ----
-
+      if (linhas[linhaAtual] == linhas[6]) {
+        alert("tente Novamente");
+      }
       if (caixa.textContent == "Enter") {
         linhas[linhaAtual].children[4].classList.remove("fundo");
         linhaAtual++;

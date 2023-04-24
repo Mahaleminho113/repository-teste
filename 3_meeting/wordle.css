@@ -21,6 +21,7 @@ body {
   flex-direction: column;
   border-top: 10px solid rgb(237, 232, 227);
 }
+
 .caixa {
   margin: 2px;
   display: flex;
@@ -33,6 +34,10 @@ body {
   border: 1px solid rgb(185, 182, 182);
   text-transform: uppercase;
 }
+.fundo {
+  border: 5px solid green;
+  border-radius: 7px;
+}
 .linha {
   gap: 15px;
   display: flex;
@@ -44,6 +49,7 @@ body {
   justify-content: center;
   border-top: 5px solid rgb(237, 232, 227);
 }
+
 .caixaTeclado {
   background-color: black;
   color: white;

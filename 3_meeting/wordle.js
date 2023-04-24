@@ -3,6 +3,7 @@ const game = document.querySelector("#game");
 const line0 = document.querySelector(".line0");
 const arrayTeclado = ["qwertyuiop", "asdfghjkl", "zxcvbnm", ["Del", "Enter"]];
 let linhaAtual = 0;
+var enter, del;
 
 // ["Del", "Enter"];
 //game ---------------
@@ -10,14 +11,21 @@ let linhaAtual = 0;
 for (let countLinha = 0; countLinha < 6; countLinha++) {
   //criando div linha--------------
   let linha = document.createElement("div");
-  //class para div linha-----------
   linha.className = "linha";
   //loop para criar coluna-----------
   for (let countColuna = 0; countColuna < 5; countColuna++) {
     //criando div caixa--------
     let caixa = document.createElement("div");
-    //class div Caixa---------
+    //adicionando class div Caixa---------
     caixa.className = "caixa";
+
+    //se for a primeira coluna da primeira linha
+    //como estamos iniciando o jogo
+    //colocaremos este objeto com o fundo cinza
+    if (countLinha == 0 && countColuna == 0) {
+      caixa.classList.add("fundo");
+    }
+
     //adicionando caixa dentro das linhas-----
     linha.appendChild(caixa);
   }
@@ -50,22 +58,42 @@ for (
     //adicionando letras do array na caixa do teclado -----
     caixa.textContent = arrayTeclado[countLinhaTeclado][countCaixaTeclado];
 
+    if (caixa.textContent == "Enter") {
+      enter = caixa;
+      caixa.style.visibility = "hidden";
+    }
+
+    if (caixa.textContent == "Del") {
+      del = caixa;
+      caixa.style.visibility = "hidden";
+    }
+
     // //adicionando evento ao button caixa do teclado---
     caixa.addEventListener("click", function () {
       //   //condição para button Enter ----
 
       if (caixa.textContent == "Enter") {
+        linhas[linhaAtual].children[4].classList.remove("fundo");
         linhaAtual++;
+        linhas[linhaAtual].children[0].classList.add("fundo");
+        enter.style.visibility = "hidden";
       }
+
       //  //condiçao para button Del -----
       else if (caixa.textContent == "Del") {
+        linhas[linhaAtual].children[4].classList.remove("fundo");
+        linhas[linhaAtual].children[0].classList.add("fundo");
         //     //loop para pular para deletar ----
-        for (let y = 4; y >= 0; y--) {
+        for (y = 4; y >= 0; y--) {
           //       //condiçoes para o loop
           if (linhas[linhaAtual].children[y].textContent !== "") {
             linhas[linhaAtual].children[y].textContent = "";
-            break;
+            // break;
           }
+        }
+
+        if (y == 0) {
+          del.style.visibility = "hidden";
         }
       } else {
         let x = 0;
@@ -75,10 +103,22 @@ for (
         }
 
         if (x < 5) {
+          del.style.visibility = "visible";
+
           linhas[linhaAtual].children[x].textContent = caixa.textContent;
+
+          if (x == 4) {
+            enter.style.visibility = "visible";
+          }
+
+          if (x >= 0 && x < 4) {
+            linhas[linhaAtual].children[x].classList.remove("fundo");
+            linhas[linhaAtual].children[x + 1].classList.add("fundo");
+          }
         }
       }
     });
+
     //adicionando div caixa na linha------
     linha.appendChild(caixa);
   }

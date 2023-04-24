@@ -1,0 +1,98 @@
+if(porta fechada){
+	if(porta trancada){
+		destrancar porta
+	}
+	abrirporta
+}
+
+entrar
+
+if(esta escuro){
+	acernder luz
+}
+
+if(hiromi em casa){
+	if(hiromi pelada){
+		fjkdgjkfdgjdkf
+	}
+	boa noite hiromi
+}
+
+if(nao comida pronta){
+	ajudar a fazer comida
+}
+
+colocar comida no prato 
+
+while(tem comida no prado){
+	comer
+}
+
+levar prato para pia
+
+if(tem mais loucas na mesa){
+	while(tem loucas na mesa){
+		levar louca para pia
+	}
+}
+
+for(x=1; x <= quantidade de louca na pia; x++){
+	lavar louca x
+}
+
+//while(tem louca na pia){
+//	lavar
+//}
+
+while(tem louca lavada){
+	secar
+}
+
+while(tem louca seca){
+	guardar
+}
+
+
+if ( vermelho) {
+	while(vermelho){
+		ficar parado
+	}
+}else if ( amarelo) {
+	reduzir e parar
+	while(not verde){
+		ficar parado
+	}
+}else{
+	continuar andando
+}
+
+
+
+while(dirigindo){
+
+	ande
+
+	if(encontrou semaforo amarelo){
+		diminui e pare
+	}
+
+	if(encontrou semaforo vermelho){
+		pare
+	}
+
+	while(semaforo não verde){
+		continue parado
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

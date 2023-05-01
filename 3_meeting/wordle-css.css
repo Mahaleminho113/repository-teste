@@ -1,0 +1,65 @@
+body {
+  background-color: rgb(237, 232, 227);
+}
+#topo {
+  display: flex;
+  color: rgb(29, 28, 28);
+  border-bottom: 4px solid rgb(138, 137, 137);
+  justify-content: center;
+  font-family: "Fascinate", cursive;
+}
+/* h1 {
+  display: flex;
+  color: rgb(29, 28, 28);
+  border-bottom: 4px solid rgb(138, 137, 137);
+  justify-content: center;
+  font-family: "Fascinate", cursive; */
+/* } */
+#game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-top: 10px solid rgb(237, 232, 227);
+}
+
+.caixa {
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid rgb(185, 182, 182);
+  text-transform: uppercase;
+}
+.fundo {
+  border: 5px solid green;
+  border-radius: 7px;
+}
+.linha {
+  gap: 15px;
+  display: flex;
+}
+
+.linhaTeclado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 5px solid rgb(237, 232, 227);
+}
+
+.caixaTeclado {
+  background-color: black;
+  color: white;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  font-size: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}

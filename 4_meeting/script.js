@@ -235,26 +235,32 @@
 
 //-----------------------------------------------------TENTATIVA SEM IF ----------------------------------------------------------------------------
 
-// function calcularGorjeta(valorDaconta) {
-//   return valorDaconta * 0.15;
-// }
-// function calcularGorjeta2(valorDaconta) {
-//   return valorDaconta * 0.2;
-// }
-// function calcularTotal(valorDaconta, gorjeta) {
-//   return valorDaconta + gorjeta;
-// }
-// const valorDaconta = 100;
-// var gorjeta = calcularGorjeta(valorDaconta);
-// var totalDaConta = calcularTotal(valorDaconta, gorjeta);
-// console.log(
-//   "A conta foi de R$" +
-//     valorDaconta +
-//     ",00" +
-//     " ,a gorjeta foi de R$" +
-//     gorjeta +
-//     ",00" +
-//     " e o valor total foi de R$" +
-//     totalDaConta +
-//     ",00"
-// );
+function calcularGorjeta(valorDaconta) {
+  return valorDaconta * 0.15;
+}
+function calcularGorjeta2(valorDaconta) {
+  return valorDaconta * 0.2;
+}
+function calcularTotal(valorDaconta, gorjeta) {
+  return valorDaconta + gorjeta;
+}
+
+const valorDaconta = 400;
+var gorjeta = calcularGorjeta(valorDaconta);
+var totalDaConta = calcularTotal(valorDaconta, gorjeta);
+cosnt =
+  valorDaconta > 50 && valorDaconta <= 300
+    ? (gorjeta = calcularGorjeta(valorDaconta))
+    : (gorjeta = calcularGorjeta2(valorDaconta));
+var totalDaConta = calcularTotal(valorDaconta, gorjeta);
+console.log(
+  "A conta foi de R$" +
+    valorDaconta +
+    ",00" +
+    " ,a gorjeta foi de R$" +
+    gorjeta +
+    ",00" +
+    " e o valor total foi de R$" +
+    totalDaConta +
+    ",00"
+);

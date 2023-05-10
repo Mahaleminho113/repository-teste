@@ -180,24 +180,46 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ------------------------------------------------------Desafio de codificação #1-------------------------------------------------------
+// Os Golfinhos e os Coalas! Existe uma nova disciplina de ginástica, que funciona de forma diferente.
+// Cada equipe compete 3 vezes e, em seguida, é calculada a média das 3 pontuações (portanto, uma pontuação média por equipe).
+// Uma equipe SÓ vence se tiver pelo menos o DOBRO da pontuação média da outra equipe. Caso contrário, nenhuma equipe ganha!
 
-// function calcMedia(G1, G2, G3) {
-//   return G1 + G2 + G3 / 3;
+// 1. Crie uma função de seta 'calcMedia' para calcular a média de 3 pontuações
+// 2. Use a função para calcular a média de ambas as equipes
+// 3. Crie uma função 'ganhador' que tome como parâmetro a pontuação média de cada equipe ('avgDolhins' e 'avgKoalas'), e então registre o vencedor no console, juntamente com os pontos de vitória, conforme regra acima. Exemplo: "Vitória dos Koalas (30 vs. 13)".
+// 4. Use a função 'ganhador' para determinar o vencedor para DADOS 1 e DADOS 2.
+// 5. Ignore os empates desta vez.
+
+// DADOS DO TESTE 1: Golfinhos pontuam 44, 23 e 71. Coalas pontuam 65, 54 e 49
+// DADOS DO TESTE 2: Golfinhos pontuam 85, 54 e 41. Coalas pontuam 23, 34 e 27
+
+// DICA: Para calcular a média de 3 valores, some todos e divida por 3
+// DICA: Para verificar se o número A é pelo menos o dobro do número B, verifique se A >= 2 * B. Aplique isso às pontuações médias da equipe 😉
+
+// BOA SORTE 😀
+// */
+
+// const calcMedia = (G1, G2, G3) => (G1 + G2 + G3) / 3;
+// const pontuacaoGolfinhos = calcMedia(44, 23, 71);
+// const pontuacaoCoalas = calcMedia(65, 54, 49);
+
+// function ganhador(mediaCoalas, mediaGolfinhos) {
+//   if (mediaGolfinhos > 2 * mediaCoalas) {
+//     console.log(
+//       "Vitória dos Golfinhos " + mediaGolfinhos + " vs " + mediaCoalas
+//     );
+//   } else if (mediaCoalas > 2 * mediaGolfinhos) {
+//     console.log("Vitoria dos Coalas" + mediaGolfinhos + " vs " + mediaCoalas);
+//   } else {
+//     console.log("empate");
+//   }
 // }
+// ganhador(pontuacaoCoalas, pontuacaoGolfinhos);
+// ganhador(10, 50);
 
-// const mediaGolfinhos = calcMedia(44, 23, 71);
-// const mediaCoalas = calcMedia(65, 54, 49);
-// console.log();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// if (mediaGolfinhos > 2 * mediaCoalas) {
-//   console.log("Vitória dos Golfinhos " + mediaGolfinhos + " vs " + mediaCoalas);
-// } else if (mediaCoalas > 2 * mediaGolfinhos) {
-//   console.log("Vitoria dos Coalas" + mediaGolfinhos + " vs " + mediaCoalas);
-// } else {
-//   console.log("empate");
-// }
-
-//-----------------------------------------Desafio calculadora---------------------------------------------------------------------------------------
+//----------------------------------------------- Desafio calculadora---------------------------------------------------------------------------------------
 
 // 1. Sua tarefa é calcular a gorjeta, dependendo do valor da conta. Crie uma variável chamada 'gorjeta' para isso.
 // Não é permitido usar uma instrução if/else 😅 (Se for mais fácil para você, você pode começar com uma instrução if/else e depois
@@ -213,8 +235,6 @@
 // DICA: Valor X está entre 50 e 300, se for >= 50 && <= 300 😉
 
 // // BOA SORTE 😀
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------Tentativa com if----------------------------------------------------------
 
@@ -234,33 +254,159 @@
 // console.log(gorjeta);
 
 //-----------------------------------------------------TENTATIVA SEM IF ----------------------------------------------------------------------------
+//---------------criando as funções-------------------------
+// function calcularGorjeta(valorDaconta) {
+//   return valorDaconta * 0.15;
+// }
+// function calcularGorjeta2(valorDaconta) {
+//   return valorDaconta * 0.2;
+// }
+// function calcularTotal(valorDaconta, gorjeta) {
+//   return valorDaconta + gorjeta;
+// }
+function converterEmReal(valor) {
+  return valor.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+}
+// //------------------------criando as  variaveis ---------------------------
+// const valorDaconta = 250;
+// var gorjeta = calcularGorjeta(valorDaconta);
+// var totalDaConta = calcularTotal(valorDaconta, gorjeta);
+// //------------------------- if inline ----------------------------
+// const calculoGorjeta =
+//   valorDaconta > 50 && valorDaconta <= 300
+//     ? (gorjeta = calcularGorjeta(valorDaconta))
+//     : (gorjeta = calcularGorjeta2(valorDaconta));
+// //------------------variavel do total da conta------------------------
+// var totalDaConta = calcularTotal(valorDaconta, gorjeta);
+// //--------------------imprimindo no console -----------------------
+// console.log(
+//   "A conta foi de " +
+//     converterEmReal(valorDaconta) +
+//     "" +
+//     " ,a gorjeta foi de " +
+//     converterEmReal(gorjeta) +
+//     "" +
+//     " e o valor total foi de " +
+//     converterEmReal(totalDaConta) +
+//     ""
+// );
 
-function calcularGorjeta(valorDaconta) {
-  return valorDaconta * 0.15;
-}
-function calcularGorjeta2(valorDaconta) {
-  return valorDaconta * 0.2;
-}
-function calcularTotal(valorDaconta, gorjeta) {
-  return valorDaconta + gorjeta;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------- Desafio de codificação #4--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Matheus ainda está construindo sua calculadora de gorjetas, usando as mesmas regras de antes: gorjeta de 15% da conta se o valor da conta estiver entre 50 e 300, e se o valor for diferente, a gorjeta é de 20%.
+
+// // 1. Escreva uma função 'calcTip' que receba qualquer valor de conta como entrada e retorne a gorjeta correspondente,
+//  calculada com base nas regras acima(você pode verificar o código do primeiro desafio da calculadora de gorjetas, se precisar).
+//   Use o tipo de função que você mais gosta. Teste a função usando um valor de nota de 100.
+// 2. E agora vamos usar arrays! Portanto, crie uma matriz 'contas' contendo os dados de teste abaixo.
+// 3. Crie um array 'gorjetas' contendo o valor da gorjeta para cada conta, calculado a partir da função que você criou anteriormente.
+// 4. BÔNUS: Crie um array 'total' contendo os valores totais, ou seja, conta + gorjeta.
+
+// DADOS DE TESTE: 125, 555 e 44
+
+// DICA: Lembre-se de que um array precisa de um valor em cada posição e esse valor pode, na verdade, ser o valor retornado de uma função! Portanto, você pode simplesmente chamar uma função como valores de array (portanto, não armazene os valores de ponta em variáveis ​​separadas primeiro, mas diretamente no novo array) 😉
+
+// BOA SORTE 😀
+// */
+
+// function calculoGorjeta1(valorDaConta) {
+//   return valorDaConta * 0.15;
+// }
+// function calculoGorjeta2(valorDaConta) {
+//   return valorDaConta * 0.2;
+// }
+
+// const valorDaConta = [125, 555, 44];
+// const valorGorjetas = [
+//   calculoGorjeta1(valorDaConta[0]),
+//   calculoGorjeta2(valorDaConta[1]),
+//   calculoGorjeta2(valorDaConta[2]),
+// ];
+// const totais = [
+//   valorDaConta[0] + valorGorjetas[0],
+//   valorDaConta[1] + valorGorjetas[1],
+//   valorDaConta[2] + valorGorjetas[2],
+// ];
+// console.log(
+//   "valor da conta 1 R$" +
+//     valorDaConta[0] +
+//     ".00 . Valor da gorjeta R$ " +
+//     valorGorjetas[0] +
+//     ".Valor total da conta 1 R$" +
+//     totais[0]
+// );
+// console.log(
+//   "valor da conta 2 R$" +
+//     valorDaConta[1] +
+//     ".00 .Valor da gorjeta R$ " +
+//     valorGorjetas[1] +
+//     " .Valor total da conta 2 R$" +
+//     totais[1] +
+//     ".00"
+// );
+// console.log(
+//   "valor da conta 3 R$" +
+//     valorDaConta[2] +
+//     ".00 .Valor da gorjeta R$ " +
+//     valorGorjetas[2] +
+//     " .Valor total da conta 3 R$" +
+//     totais[2]
+// );
+
+function converterEmReal(valor) {
+  return valor.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
 }
 
-const valorDaconta = 400;
-var gorjeta = calcularGorjeta(valorDaconta);
-var totalDaConta = calcularTotal(valorDaconta, gorjeta);
-cosnt =
-  valorDaconta > 50 && valorDaconta <= 300
-    ? (gorjeta = calcularGorjeta(valorDaconta))
-    : (gorjeta = calcularGorjeta2(valorDaconta));
-var totalDaConta = calcularTotal(valorDaconta, gorjeta);
-console.log(
-  "A conta foi de R$" +
-    valorDaconta +
-    ",00" +
-    " ,a gorjeta foi de R$" +
-    gorjeta +
-    ",00" +
-    " e o valor total foi de R$" +
-    totalDaConta +
-    ",00"
-);
+const calcGorjeta = (valorDaConta) =>
+  valorDaConta > 50 && valorDaConta <= 300
+    ? valorDaConta * 0.15
+    : valorDaConta * 0.2;
+
+const valorDaConta = [125, 555, 44, 888, 10, 500];
+const totais = [];
+const valorGorjetas = [];
+
+for (let contador = 0; contador < valorDaConta.length; contador++) {
+  valorGorjetas.push(calcGorjeta(valorDaConta[contador]));
+  totais.push(valorDaConta[contador] + valorGorjetas[contador]);
+  console.log(
+    "valor da conta " +
+      (contador + 1) +
+      " " +
+      converterEmReal(valorDaConta[contador]) +
+      " .Valor da gorjeta " +
+      converterEmReal(valorGorjetas[contador]) +
+      " .Valor total da conta  " +
+      (contador + 1) +
+      " " +
+      converterEmReal(totais[contador])
+  );
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//-------------------------------lição-----------------------
+/*
+TUDO EM JAVASCRIPT
+nome da comida ;
+inserir valor das comidas ; SO NUMEROS
+valor da comida tem que entrar no valor da conta *valordaconta[];
+
+button delete deleta ultima comida e seu valor - DELETAR VALOR DOS DOIS ARRAYS
+
+desafio -------------------------------------
+quando fechar conta voce deve perguntar se tem certeza.
+button SIM e button NAO
+SIM fecha a conta e o programa nao responde mais
+NAO nao faz nada.
+
+Depois desse desafio vamos entrar com janela Modal/POPUP
+
+
+*/

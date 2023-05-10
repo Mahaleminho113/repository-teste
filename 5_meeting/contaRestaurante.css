@@ -1,0 +1,49 @@
+/* .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+} */
+.container {
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.input {
+  display: flex;
+  border: 2px solid blue;
+  width: 100px;
+}
+
+.button {
+  display: flex;
+  border: 2px solid blue;
+  width: 50px;
+  height: 20px;
+}
+
+.pratoInserido {
+  border: 2px solid blue;
+  text-align: center;
+  width: 70%;
+  height: 20px;
+}
+
+.valorPrato {
+  border: 2px solid blue;
+  text-align: center;
+  width: 25%;
+  height: 20px;
+}

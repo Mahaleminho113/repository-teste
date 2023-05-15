@@ -1,17 +1,38 @@
 //Exemplo de botao deletar
-// const divBoard = document.querySelector("#board");
+const divBoard = document.querySelector("#board");
 
-// Aquecimento para proxima aula --  MODAL/POPUP
+//Aquecimento para proxima aula --  MODAL/POPUP
+// const inputTest = document.createElement("input");
 // const abrirModalButton = document.createElement("button");
 // abrirModalButton.textContent = "Abrir Modal";
 // const janelaModal = document.createElement("div");
-// janelaModal.textContent = "janela modal";
-// janelaModal.classList.add("modal");
+// // janelaModal.textContent = "janela modal";
+// // janelaModal.classList.add("modal");
 // // janelaModal.classList.add("hidden");
+// const arrayTest = [];
+// divBoard.appendChild(inputTest);
 // divBoard.appendChild(abrirModalButton);
 // divBoard.appendChild(janelaModal);
 
-// const arrayTest = ["primeiro", "segundo", "terceiro"];
+// abrirModalButton.addEventListener("click", function () {
+//   arrayTest.push(inputTest.value);
+
+//   const name = document.createElement("p");
+//   for (let count = 0; count < arrayTest.length; count++)
+//     name.textContent = arrayTest[count];
+
+//   const deleteButton = document.createElement("button");
+//   deleteButton.textContent = "delete";
+
+//   deleteButton.addEventListener("click", function () {
+//     name.remove();
+//     deleteButton.remove();
+//   });
+
+//   divBoard.appendChild(name);
+//   divBoard.appendChild(deleteButton);
+// });
+
 // for (let count = 0; count < arrayTest.length; count++) {
 //   const name = document.createElement("p");
 //   name.textContent = arrayTest[count];
@@ -73,68 +94,120 @@ Depois desse desafio vamos entrar com janela Modal/POPUP
 
 //criando as constantes----------------------------------
 
+// const container = document.querySelector(".container");
+// const input = document.createElement("input");
+// const nome = document.createElement("p");
+// const valor = document.createElement("p");
+// const inputValor = document.createElement("input");
+// const buttonInserir = document.createElement("button");
+// const pedido = document.createElement("h1");
+// const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// //inserindo class as const-------------------------------
+
+// buttonInserir.className = "button";
+// input.className = "input";
+// inputValor.className = "inputValor";
+
+// //adicionando nome ao input------------------------------
+
+// nome.textContent = "Nome da comida";
+// valor.textContent = "Valor da comida";
+
+// //adicionando o texto ao button --------------------------
+
+// buttonInserir.textContent = "Inserir";
+
+// //inserindo texto para pedido----------------------------
+
+// pedido.textContent = "Pedido";
+
+// //loop para criar os inputs-------------------------------
+
+// // for (let countinputs = 0; countinputs < 2; countinputs++) {
+// //   let inputs = document.createElement("input");
+// //   inputs.className = "input";
+// //   container.appendChild(inputs);
+// // }
+
+// //adicionando os elementos criados no container----------
+// container.appendChild(nome);
+// container.appendChild(input);
+// container.appendChild(valor);
+// container.appendChild(inputValor);
+// container.appendChild(buttonInserir);
+// container.appendChild(pedido);
+
+// // adicionando um evento ao buttonInserir-----------------
+// const arrayPedido = [];
+// buttonInserir.addEventListener("click", function () {
+//   arrayPedido.push(inputValor.value);
+
+//   const pratoInserido = document.createElement("div");
+//   const valorPrato = document.createElement("div");
+//   //inserindo os valores dentro da div----------------------
+//   container.appendChild(pratoInserido);
+//   container.appendChild(valorPrato);
+//   //adicionando class as const----------------------------
+//   valorPrato.className = "valorPrato";
+//   pratoInserido.className = "pratoInserido";
+//   //inserindo os valores como texto na div---------------
+//   pratoInserido.textContent = input.value;
+//   valorPrato.textContent = "R$" + inputValor.value + ",00";
+
+// });
+
+//----------------------------- criando as constantes -------------------------------------------
+
 const container = document.querySelector(".container");
-const input = document.createElement("input");
-const nome = document.createElement("p");
-const valor = document.createElement("p");
-const inputValor = document.createElement("input");
+const inputPrato = document.createElement("input");
 const buttonInserir = document.createElement("button");
-const pedido = document.createElement("h1");
-const arrayValorInserido = [];
-
-//inserindo class as const-------------------------------
-
-buttonInserir.className = "button";
-input.className = "input";
-inputValor.className = "input";
-
-//adicionando nome ao input------------------------------
-
-nome.textContent = "Nome da comida";
-valor.textContent = "Valor da comida";
-
-//adicionando o texto ao button --------------------------
-
 buttonInserir.textContent = "Inserir";
+const inputValor = document.createElement("input");
+const arrayPedido = [];
 
-//inserindo texto para pedido----------------------------
+// ----------------------------- inserindo class as const ---------------------------------------
 
-pedido.textContent = "Pedido";
+container.className = "container";
+inputPrato.className = "input";
+inputValor.className = "inputValor";
+buttonInserir.className = "button";
 
-//loop para criar os inputs-------------------------------
+//------------------------------ adicionando os elementos criados no container -------------------
 
-// for (let countinputs = 0; countinputs < 2; countinputs++) {
-//   let inputs = document.createElement("input");
-//   inputs.className = "input";
-//   container.appendChild(inputs);
-// }
-
-//adicionando os elementos criados no container----------
-container.appendChild(nome);
-container.appendChild(input);
-container.appendChild(valor);
-container.appendChild(inputValor);
+container.appendChild(inputPrato);
 container.appendChild(buttonInserir);
-container.appendChild(pedido);
+container.appendChild(inputValor);
 
-//criando functios----------------------------------------
-function converterEmReal(valor) {
-  return valor.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
-}
-
-// adicionando um evento ao buttonInserir-----------------
+//----------------------------- adicionando evento em buttonInserir---------------------------------
 
 buttonInserir.addEventListener("click", function () {
-  const pratoInserido = document.createElement("div");
-  const valorPrato = document.createElement("div");
+  const divBoard = document.createElement("div");
 
-  container.appendChild(pratoInserido);
-  pratoInserido.textContent = input.value;
-  pratoInserido.className = "pratoInserido";
-  container.appendChild(valorPrato);
-  valorPrato.className = "valorPrato";
-  valorPrato.textContent = inputValor.value;
+  divBoard.className = "divBoard";
+
+  arrayPedido.push(inputPrato.value + " R$" + inputValor.value);
+
+  const name = document.createElement("div");
+
+  //---------------------------- loop para imprimir  valor do array e para criar o button delete  -----
+
+  for (let count = 0; count < arrayPedido.length; count++)
+    name.textContent = arrayPedido[count];
+  name.className = "pratoInserido";
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "delete";
+  deleteButton.className = "deleteButton";
+
+  container.appendChild(divBoard);
+  deleteButton.addEventListener("click", function () {
+    name.remove();
+    deleteButton.remove();
+    divBoard.remove();
+  });
+
+  divBoard.appendChild(name);
+
+  divBoard.appendChild(deleteButton);
 });

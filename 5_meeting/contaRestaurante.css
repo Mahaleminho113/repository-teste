@@ -11,39 +11,44 @@
   z-index: 10;
 }
 
-.hidden {
+ .hidden {
   display: none;
 } */
 .container {
   display: flex;
   flex-direction: column;
-  column-gap: 10px;
-  row-gap: 15px;
+  gap: 20px;
 }
 
 .input {
-  display: flex;
   border: 2px solid blue;
-  width: 100px;
+}
+
+.inputValor {
+  border: 2px solid blue;
 }
 
 .button {
-  display: flex;
   border: 2px solid blue;
-  width: 50px;
-  height: 20px;
 }
 
+.divBoard {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 4px solid blue;
+}
 .pratoInserido {
   border: 2px solid blue;
-  text-align: center;
-  width: 70%;
-  height: 20px;
+  height: 25px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
-
-.valorPrato {
-  border: 2px solid blue;
-  text-align: center;
-  width: 25%;
-  height: 20px;
+.deleteButton {
+  width: 8%;
+  height: 40px;
 }

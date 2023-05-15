@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .tudo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .cabeça {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .inserir {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .linha {
+        border: 2px solid black;
+      }
+      .valores {
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+      }
+      .ondeImprimi {
+        border: 2px solid black;
+        padding-right: 70px;
+        padding-top: 10px;
+      }
+      .button {
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tudo">
+      <div class="cabeça">
+        <div class="inputs">
+          <input type="text" />
+          <input type="number" />
+        </div>
+
+        <div class="inserir">
+          <button>Inserir</button>
+        </div>
+      </div>
+
+      <div class="linha"></div>
+
+      <div class="valores">
+        <div class="ondeImprimi">
+          nome da comida =>>> valor<br />
+          nome da comida =>>> valor<br />
+          nome da comida =>>> valor
+        </div>
+
+        <div class="button">
+          <button>Delete</button>
+          <button>Fechar conta</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

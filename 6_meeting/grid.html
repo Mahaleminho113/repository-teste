@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 50px 50px 50px;
+        justify-content: space-evenly;
+      }
+      .inserir1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .inserir2 {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      .inserir3 {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        place-self: center;
+        /* margin: 20px;
+        width: 100px; */
+
+        /* grid-column: 2;
+        grid-row: 2; */
+      }
+
+      .container2 {
+        display: grid;
+        grid-template-columns: 55% 55%;
+        grid-template-rows: 50px 50px 50px 50px;
+      }
+      .linha1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .linha2 {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .linha3 {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      .linha4 {
+        grid-column: 1;
+        grid-row: 4;
+      }
+      .buttonDelete {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .buttonDelete {
+        grid-column: 2;
+        grid-row: 4;
+      }
+
+      p {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input placeholder="primeiro" class="inserir1" />
+      <button class="inserir3">inserir</button>
+      <input placeholder="segundo" type="number" class="inserir2" />
+    </div>
+    <div class="container2">
+      <p class="linha1">nome da comida =>>> valor</p>
+      <p class="linha2">nome da comida =>>> valor</p>
+      <p class="linha3">nome da comida =>>> valor</p>
+      <p class="linha4">nome da comida =>>> valor</p>
+      <button class="buttonDelete">Delete</button>
+      <button class="buttonFechar">Fechar Conta</button>
+    </div>
+  </body>
+</html>
+<!-- 
+     body{
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    background-image: radial-gradient(circle at 23.94% 18.95%, #d3345b 0, #c42b5a 25%, #b32257 50%, #a21954 75%, #931150 100%);
+     } -->

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tela Do Jogo</title>
+    <style>
+
+body{
+
+    display: flex;
+    justify-content: center;
+    background: rgb(201,25,75);
+    background: linear-gradient(159deg, rgba(201,25,75,1) 10%, rgba(63,6,106,1) 84%, rgba(63,6,106,1) 100%, rgba(9,9,121,1) 100%);
+    
+}
+
+button{
+
+    border-radius: 30px;
+    width: 100px;
+
+}
+
+p{
+
+    margin: 0%;
+    padding-bottom: 10px;
+    font-size: 23px;
+
+}
+
+    /*modificando itens da div com a classe quadradoMaior*/
+
+.quadradoMaior{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: row;
+
+}
+
+     /* ------------------tudo sobre campo jogador 1-----------*/
+
+ /*modificando itens da div com a classe quadradojogador1*/
+
+.quadradoJogador1{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    background-color: #e49aae;
+
+}
+
+/*modificando tag H1 com a classe jogador1*/
+
+.jogador1{
+
+    margin: 0%;
+    padding-top: 50px;
+
+}
+
+/*modificando  tag P com a classe pontuaçãoJogador1*/
+
+.pontuaçãoJogador1{
+           
+   display: flex;
+   margin: 0%;
+   color: #cc4d66;
+   padding-bottom: 100px;
+   padding-top: 40px;
+   font-size: 50px;
+
+}
+
+   /* ----------------tudo sobre campo jogador 2---------------*/
+
+/*modificando itens da div com a classe quadradojogador2*/
+
+.quadradoJogador2{
+  
+   display:flex;          
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
+   height: 400px;
+   background: #e096ab;
+   opacity: 0.7;
+
+}
+
+/*modificando tag H1 com a classe jogador2*/
+
+.jogador2{
+
+   margin: 0%;
+   padding-top: 50px;
+   
+
+}
+
+/*modificando  tag P com a classe pontuaçãoJogador2*/
+      
+.pontuaçãoJogador2{
+
+    display: flex;    
+    margin: 0%;
+    color: #cc4d66;
+    padding-bottom: 100px;
+    padding-top: 40px;
+    font-size: 50px;
+
+}
+     
+/*modificando elementos da div com a classe divAtual*/
+
+.divAtual{
+
+    width: 100px;
+    height: 70px;
+    background-color: #cc4d66;
+    color: aliceblue;
+    font-size: 15px;
+    border-radius: 5px ; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+/*modificando tag P com a classe Atual*/
+
+.atual{
+
+    padding-top:10px ;
+    margin: 0%;
+    font-size: 10px;
+    
+}
+
+/*modificando todas as tags button*/
+
+
+ /*modificando itens da div com a classe divButton*/
+.divButton{
+
+     display: flex;
+     flex-direction: column;
+    
+
+}
+
+.novoJogo{
+    padding-top: 20px;
+}
+
+.girarDado{
+
+    padding-top: 250px;
+    padding-bottom: 15px;
+
+}
+
+    </style>
+
+ 
+</head>
+  <body>
+
+<!---------------- criando as div ---------------------- -->
+
+    <div class="quadradoMaior">
+        <div class="quadradoJogador1">
+            <h1 class="jogador1">JOGADOR 1</h1>
+              <h1 class="pontuaçãoJogador1">0</h1>
+              <div class="divAtual">
+                   <p class="atual">ATUAL</p>
+                <p>0</p>
+              </div>
+
+        </div>
+        
+<div class="divButton">
+    <div class="novoJogo"><button id="novojogo">NOVO JOGO</button></div> 
+    <div class="girarDado"><button id="girarDado">GIRAR DADO</button></div>
+    <div class="segurar"><button id="segurar">SEGURAR</button></div>
+</div>
+
+        <div class="quadradoJogador2">
+              <h1 class="jogador2">JOGADOR 2</h1>
+              <h1 class="pontuaçãoJogador2">0</h1>
+              <div class="divAtual">
+                <p class="atual">ATUAL</p>
+                <p>0</p>
+              </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

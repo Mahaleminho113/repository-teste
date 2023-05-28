@@ -8,8 +8,10 @@ body{
 
     display: flex;
     justify-content: center;
-    background: rgb(201,25,75);
-    background: linear-gradient(159deg, rgba(201,25,75,1) 10%, rgba(63,6,106,1) 84%, rgba(63,6,106,1) 100%, rgba(9,9,121,1) 100%);
+    background: rgb(201,8,99);
+    background: linear-gradient(151deg, rgba(201,8,99,1) 0%, rgba(9,9,121,1) 100%);
+    /* background: linear-gradient(159deg, rgba(201,25,75,1) 10%, rgba(63,6,106,1) 84%, rgba(63,6,106,1) 100%, rgba(9,9,121,1) 100%); */
+    font-family: 'Montserrat' ,sans-serif;
     
 }
 
@@ -53,6 +55,8 @@ p{
     width: 300px;
     height: 400px;
     background-color: #e49aae;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 
 }
 
@@ -62,6 +66,7 @@ p{
 
     margin: 0%;
     padding-top: 50px;
+    font-size: 25px;
 
 }
 
@@ -72,8 +77,8 @@ p{
    display: flex;
    margin: 0%;
    color: #cc4d66;
-   padding-bottom: 100px;
-   padding-top: 40px;
+   padding-bottom: 120px;
+   padding-top: 20px;
    font-size: 50px;
 
 }
@@ -91,6 +96,8 @@ p{
    height: 400px;
    background: #e096ab;
    opacity: 0.7;
+   border-bottom-right-radius: 10px;
+   border-top-right-radius: 10px;
 
 }
 
@@ -100,6 +107,7 @@ p{
 
    margin: 0%;
    padding-top: 50px;
+   font-size: 25px;
    
 
 }
@@ -111,8 +119,8 @@ p{
     display: flex;    
     margin: 0%;
     color: #cc4d66;
-    padding-bottom: 100px;
-    padding-top: 40px;
+    padding-bottom: 120px;
+    padding-top: 20px;
     font-size: 50px;
 
 }
@@ -153,35 +161,50 @@ p{
      flex-direction: column;
      position: absolute;
      z-index: 5;
-     transform: translateX(250%);
+     transform: translateX(180%);
      align-items: center;
     
-
 }
 
 .novoJogo{
+
     padding-top: 20px;
+    opacity: 0.8;
+
 }
 
 .girarDado{
 
     padding-top: 250px;
-    padding-bottom: 15px;
+    padding-bottom: 8px;
+    opacity: 0.8;
 
 }
 
+#novoJogo{
 
+    width: 130px;
+    height: 30px;
+    font-size: 10px;
+    opacity: 0.9;
+
+}
 #girarDado{
 
     width: 100px;
     height: 20px;
+    height: 30px;
+    font-size: 10px;
+    opacity: 0.8;
 
 }
 
 #segurar{
 
     width: 80px;
-    height: 20px;
+    height: 30px;
+    opacity: 0.8;
+    font-size: 10px;
    
 }
 
@@ -195,26 +218,26 @@ p{
 
     <div class="quadradoMaior">
         <div class="quadradoJogador1">
-            <h1 class="jogador1">JOGADOR 1</h1>
-              <h1 class="pontuaçãoJogador1">0</h1>
+            <P class="jogador1">PLAYER 1</P>
+              <p class="pontuaçãoJogador1">0</p>
               <div class="divAtual">
-                   <p class="atual">ATUAL</p>
+                   <p class="atual">CURRENT</p>
                 <p>0</p>
               </div>
 
         </div>
         
 <div class="divButton">
-    <div class="novoJogo"><button id="novojogo">NOVO JOGO</button></div> 
-    <div class="girarDado"><button id="girarDado">GIRAR DADO</button></div>
-    <div class="segurar"><button id="segurar">SEGURAR</button></div>
+    <div class="novoJogo"><button id="novoJogo">NEW GAME</button></div> 
+    <div class="girarDado"><button id="girarDado">ROLL DICE</button></div>
+    <div class="segurar"><button id="segurar">HOLD</button></div>
 </div>
 
         <div class="quadradoJogador2">
-              <h1 class="jogador2">JOGADOR 2</h1>
-              <h1 class="pontuaçãoJogador2">0</h1>
+              <P class="jogador2">PLAYER 2</P>
+              <p class="pontuaçãoJogador2">0</p>
               <div class="divAtual">
-                <p class="atual">ATUAL</p>
+                <p class="atual">CURRENT</p>
                 <p>0</p>
               </div>
             </div>

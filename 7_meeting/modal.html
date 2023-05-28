@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <link rel="stylesheet" href="../5_meeting/modal.css" />
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-------------------------------------------- parte de css  ----------------------------------------------------->
+
+    <style>
+      .um {
+        top: 50px;
+        left: 50px;
+        background-color: aqua;
+      }
+      .dois {
+        top: 100px;
+        left: 100px;
+        background-color: red;
+      }
+      .tres {
+        top: 150px;
+        left: 150px;
+        background-color: blue;
+      }
+      .quatro {
+        top: 200px;
+        left: 200px;
+        background-color: pink;
+      }
+      .todos {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        position: absolute;
+      }
+    </style>
+
+    <!-- /* --------------------------------------------- Final parte de css  ------------------------------------------- */ -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  </head>
+
+  <body>
+    <div class="um todos"></div>
+    <div class="dois todos"></div>
+    <div onclick="click(event)" class="tres todos"></div>
+    <div class="quatro todos"></div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-----------------------------------------------  Inicio parte de script ----------------------------------------------------->
+
+    <script>
+      //   const um = document.querySelector(".um");
+      //   const dois = document.querySelector(".dois");
+      //   const tres = document.querySelector(".tres");
+      //   const quatro = document.querySelector(".quatro");
+      //   um.addEventListener("click", function () {
+      //     var zindex = getMaxZIndex();
+      //     zindex++;
+      //     this.style.zIndex = zindex;
+      //   });
+
+      //   dois.addEventListener("click", function () {
+      //     var zindex = getMaxZIndex();
+      //     zindex++;
+      //     this.style.zIndex = zindex;
+      //   });
+
+      //   tres.addEventListener("click", function () {
+      //     var zindex = getMaxZIndex();
+      //     zindex++;
+      //     this.style.zIndex = zindex;
+      //   });
+
+      //   quatro.addEventListener("click", function () {
+      //     var zindex = getMaxZIndex();
+      //     zindex++;
+      //     this.style.zIndex = zindex;
+      //   });
+      //////////////////////////////////////////////////////////////////////
+      //---------------forEach---------------------------------------
+      /////////////////////////////////////////////////////////////////////
+      //   document.querySelectorAll(".todos").forEach(function (el) {
+      //     el.addEventListener("click", function () {
+      //       var zindex = getMaxZIndex();
+      //       zindex++;
+      //       el.style.zIndex = zindex;
+      //     });
+      //   });
+
+      //  constantes
+      const todos = document.querySelectorAll(".todos");
+
+      for (let contador = 0; contador < todos.length; contador++) {
+        todos[contador].addEventListener("mousedown", function (e) {
+          switch (e.buttons) {
+            case 1:
+              this.style.zIndex = getMaxZIndex() + 1;
+              break;
+
+            case 2:
+              this.style.zIndex = getMinZIndex() - 1;
+              break;
+          }
+        });
+      }
+      //  funcoes //
+      function getMaxZIndex() {
+        return Math.max(
+          ...Array.from(document.querySelectorAll("body *"), (el) =>
+            parseFloat(window.getComputedStyle(el).zIndex)
+          ).filter((zIndex) => !Number.isNaN(zIndex)),
+          0
+        );
+      }
+
+      function getMinZIndex() {
+        return Math.min(
+          ...Array.from(document.querySelectorAll("body *"), (el) =>
+            parseFloat(window.getComputedStyle(el).zIndex)
+          ).filter((zIndex) => !Number.isNaN(zIndex)),
+          0
+        );
+      }
+    </script>
+
+    <!---------------------------------------------------  Final  parte de script -------------------------------------------------------->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-------------------------------------------------------  MISSAO   ------------------------------------------------------------------>
+    <!------------- //jogar para tras com o click do mouse  direito ,jogar para frente com o click do mouse esquerdo -------------------->
+
+    <!----------------------------------------------  DICA PARA ACESSAR OS LINKS --------------------------------------------------------->
+    <!----------------------------------------  Encima do link Ctrl e Click mouse lado esquerdo  ----------------------------------------->
+
+    <!------------------------------------------------ links  para realizar tarefa -------------------------------------------------------->
+
+    <!------------------------------- // link onde explica sobre o índice do valor Max/Min no Array em JavaScript:
+                                    ==>  https://bobbyhadz.com/blog/javascript-get-index-of-max-value-in-array <==      
+-->
+    <!------------------------------- //link onde aprendi Como diferenciar click do botão esquerdo e direito com JavaScript :
+                               ==> https://horadecodar.com.br/como-diferenciar-click-do-botao-esquerdo-e-direito-com-javascript/  <== 
+-->
+  </body>
+</html>

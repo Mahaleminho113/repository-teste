@@ -5,83 +5,160 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-------------------------------------------- parte de css  ----------------------------------------------------->
+
     <style>
       .teste {
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
+        font-size: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
       }
+
       .telacinza {
+        background-color: #383838;
         position: absolute;
         top: 0px;
         left: 0px;
         width: 100%;
         height: 100%;
         display: none;
-        background-color: gray;
+        /* background-color: gray; */
         z-index: 2;
         opacity: 0.8;
       }
-      .confirma {
-        display: none;
-        width: 100px;
+
+      .buttonteste {
+        width: 150px;
         height: 100px;
+        font-size: 20px;
+      }
+      .confirma {
+        background-color: white;
+        width: 400px;
+        height: 150px;
         border: 1px solid black;
+        display: none;
         z-index: 3;
         left: 50%;
         top: 50%;
         position: absolute;
         transform: translate(-50%, -50%);
+        opacity: 1;
       }
 
-      /* .modal {
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
-        z-index: 10;
-      } */
+      .buttons {
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 3%;
+      }
+
+      #sim {
+        width: 80px;
+        height: 30px;
+      }
+
+      #sim:hover {
+        background-color: blue;
+        border: 3px solid black;
+        border-radius: 5px;
+        font-size: 20px;
+      }
+      #nao {
+        width: 80px;
+        height: 30px;
+      }
+
+      #nao:hover {
+        background-color: red;
+        border: 3px solid black;
+        border-radius: 5px;
+        font-size: 20px;
+      }
     </style>
+
+    <!-- /* --------------------------------------------- Final parte de css  ------------------------------------------- */ -->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   </head>
   <body>
     <div class="teste">
-      licao de casa <button class="buttonteste">teste</button>
+      MISSAO
+      <button class="buttonteste">TESTE</button>
     </div>
     <div class="telacinza">
       <div class="confirma">
-        <button id="sim">sim</button>
-        <button id="nao">nao</button>
+        <div class="buttons">
+          DESEJA TESTAR
+          <button id="sim">SIM</button>
+          <button id="nao">NAO</button>
+          Tecle ESC para voltar na tela Principal
+        </div>
       </div>
     </div>
 
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-----------------------------------------------  Inicio parte de script ----------------------------------------------------->
+
     <script>
+      const divteste = document.querySelector(".teste");
       const buttonteste = document.querySelector(".buttonteste");
       const telacinza = document.querySelector(".telacinza");
       const confirma = document.querySelector(".confirma");
       const buttonsim = document.getElementById("sim");
       const buttonnao = document.getElementById("nao");
 
+      document.onkeydown = function (e) {
+        if (e.key === "Escape") {
+          telacinza.style.display = "none";
+          confirma.style.display = "none";
+          buttonteste.textContent = "Teste";
+        }
+      };
+
       buttonteste.addEventListener("click", function () {
         telacinza.style.display = "block";
         confirma.style.display = "block";
       });
 
-      buttonsim.addEventListener("click", function () {
-        telacinza.style.display = "none";
-        confirma.style.display = "none";
-        buttonteste.textContent = "foi";
-      });
-
-      telacinza.addEventListener("click", function () {
-        telacinza.style.display = "none";
-        confirma.style.display = "none";
-        buttonteste.textContent = "teste";
-      });
-
       buttonnao.addEventListener("click", function () {
         telacinza.style.display = "none";
         confirma.style.display = "none";
-        buttonteste.textContent = "teste";
+        buttonteste.textContent = "TESTE";
+      });
+
+      buttonsim.addEventListener("click", function () {
+        buttonteste.textContent = "FUNCIONOU";
+        telacinza.style.display = "none";
+        confirma.style.display = "none";
       });
     </script>
+
+    <!---------------------------------------------------  Final  parte de script -------------------------------------------------------->
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-------------------------------------------------------  MISSAO   ------------------------------------------------------------------>
+    <!---------------------------------------------  Ao teclar ESC tela cinza se fecha -------------------------------------------------->
+
+    <!----------------------------------------------  DICA PARA ACESSAR OS LINKS --------------------------------------------------------->
+    <!----------------------------------  Encima do link tecle Ctrl e Click com lado esquerdo mouse ----------------------------------------->
+
+    <!------------------------------------------------ links  para realizar tarefa -------------------------------------------------------->
+
+    <!--------------------------------  link onde explica sobre Como detectar esc com JavaScript (Tecla Escape):  ------------------------
+                                    ==>  https://horadecodar.com.br/como-detectar-esc-com-javascript-tecla-escape/ <==      
+-->
   </body>
 </html>

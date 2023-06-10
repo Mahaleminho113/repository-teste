@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Matheus</title>
+    <style>
+      .aqua {
+        top: 50px;
+        left: 50px;
+        background-color: aqua;
+      }
+
+      .red {
+        top: 100px;
+        left: 100px;
+        background-color: red;
+      }
+
+      .blue {
+        top: 150px;
+        left: 150px;
+        background-color: blue;
+      }
+
+      .pink {
+        top: 200px;
+        left: 200px;
+        background-color: pink;
+      }
+
+      div {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //constantes
+      const body = document.querySelector("body");
+      const divAqua = document.createElement("div");
+      const divRed = document.createElement("div");
+      const divBlue = document.createElement("div");
+      const divPink = document.createElement("div");
+
+      // appendChild
+      body.appendChild(divAqua);
+      body.appendChild(divRed);
+      body.appendChild(divBlue);
+      body.appendChild(divPink);
+
+      //classes
+      divAqua.className = "aqua todos";
+      divRed.className = "red todos";
+      divBlue.className = "blue todos";
+      divPink.className = "pink todos";
+
+      //appendChildTodos
+      const todos = document.querySelectorAll("div");
+      for (let contador = 0; contador < todos.length; contador++) {
+        todos[contador].addEventListener("mousedown", function (e) {
+          switch (e.buttons) {
+            case 1:
+              this.style.zIndex = "1";
+              break;
+
+            case 2:
+              this.style.zIndex = "-10";
+              break;
+          }
+        });
+      }
+
+      //addEventListner
+      // divAqua.addEventListener("mousedown", function (e) {
+      //   switch (e.buttons) {
+      //     case 1:
+      //       this.style.zIndex = "5";
+      //       break;
+
+      //     case 2:
+      //       this.style.zIndex = "-1";
+      //       break;
+      //   }
+      // });
+
+      // divRed.addEventListener("mousedown", function (e) {
+      //   switch (e.buttons) {
+      //     case 1:
+      //       this.style.zIndex = "5";
+      //       break;
+
+      //     case 2:
+      //       this.style.zIndex = "-1";
+      //       break;
+      //   }
+      // });
+
+      // divBlue.addEventListener("mousedown", function (e) {
+      //   switch (e.buttons) {
+      //     case 1:
+      //       this.style.zIndex = "5";
+      //       break;
+
+      //     case 2:
+      //       this.style.zIndex = "-1";
+      //       break;
+      //   }
+      // });
+
+      // divPink.addEventListener("mousedown", function (e) {
+      //   switch (e.buttons) {
+      //     case 1:
+      //       this.style.zIndex = "5";
+      //       break;
+
+      //     case 2:
+      //       this.style.zIndex = "-1";
+      //       break;
+      //   }
+      // });
+    </script>
+  </body>
+</html>

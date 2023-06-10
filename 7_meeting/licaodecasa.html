@@ -65,6 +65,7 @@
         gap: 10px;
         padding: 3%;
       }
+
       .simnao {
         display: flex;
         flex-direction: row;
@@ -130,7 +131,7 @@
       const buttonnao = document.getElementById("nao");
 
       document.onkeydown = function (e) {
-        if (e.key === "Escape") {
+        if (e.keyCode === 27) {
           telacinza.style.display = "none";
           confirma.style.display = "none";
           buttonteste.textContent = "Teste";

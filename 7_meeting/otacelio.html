@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Otacelio</title>
+
+    <style>
+      .div1 {
+        top: 50px;
+        left: 50px;
+        background-color: aqua;
+        z-index: 1;
+      }
+
+      .div2 {
+        top: 100px;
+        left: 100px;
+        background-color: red;
+        z-index: 2;
+      }
+
+      .div3 {
+        top: 150px;
+        left: 150px;
+        background-color: blue;
+        z-index: 3;
+      }
+
+      .div4 {
+        top: 200px;
+        left: 200px;
+        background-color: pink;
+        z-index: 4;
+      }
+
+      .todos {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function (ev) {
+        //quantidade maxima de DIV(s)
+        var maxEl = 4;
+
+        //desliga o menu que aparece quando pressiona o botão direito do mouse
+        window.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        //cria os DIV(s)
+        for (let x = 0; x < maxEl; x++) {
+          var el = document.createElement("div");
+          el.classList.add("todos", "div" + (x + 1));
+          document.body.appendChild(el);
+        }
+
+        //capitura o MAX e MIN z-Index (fiz para não precisar varrer o document toda hora)
+        var maxZindex = getMaxZIndex("div");
+        var minZindex = getMinZIndex("div");
+
+        /*
+			adiciona o evento mousedoun
+			sugiro alterar para click. porem no click não existe qual botão foi pressionado
+			desta forma sugiro analisar o uso da tecla ALT + o click
+			quanto houver o click com a tecla ALT pressionada irá enviar o elemento para traz
+			isto ja existe no fireworks mas para zoom in zoom out
+			*/
+
+        document.querySelectorAll(".todos").forEach(function (el) {
+          //el.addEventListener("mousedown", function (e) {
+          //	this.style.zIndex = (e.buttons == 1 ? ++maxZindex : --minZindex);
+          //});
+
+          el.addEventListener("click", function (e) {
+            this.style.zIndex = !e.altKey ? ++maxZindex : --minZindex;
+          });
+        });
+      });
+
+      function getMaxZIndex(tag = "body *") {
+        return Math.max(
+          ...Array.from(document.querySelectorAll(tag), (el) =>
+            parseFloat(window.getComputedStyle(el).zIndex)
+          ).filter((zIndex) => !Number.isNaN(zIndex)),
+          0
+        );
+      }
+
+      function getMinZIndex(tag = "body *") {
+        return Math.min(
+          ...Array.from(document.querySelectorAll(tag), (el) =>
+            parseFloat(window.getComputedStyle(el).zIndex)
+          ).filter((zIndex) => !Number.isNaN(zIndex)),
+          0
+        );
+      }
+    </script>
+  </body>
+</html>

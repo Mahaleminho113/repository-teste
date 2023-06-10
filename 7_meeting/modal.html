@@ -31,10 +31,37 @@
         left: 200px;
         background-color: pink;
       }
+
+      .cinco {
+        top: 50px;
+        right: 50px;
+        background-color: aqua;
+      }
+
+      .seis {
+        top: 100px;
+        right: 100px;
+        background-color: red;
+      }
+      .sete {
+        top: 150px;
+        right: 150px;
+        background-color: blue;
+      }
+      .oito {
+        top: 200px;
+        right: 200px;
+        background-color: pink;
+      }
+      /* .todos:hover {
+        background-color: white;
+        border: 0px;
+      } */
+
       .todos {
-        height: 100px;
-        width: 100px;
-        border: 1px solid black;
+        height: 150px;
+        width: 150px;
+        border: 3px solid black;
         position: absolute;
       }
     </style>
@@ -46,8 +73,12 @@
   <body>
     <div class="um todos"></div>
     <div class="dois todos"></div>
-    <div onclick="click(event)" class="tres todos"></div>
+    <div class="tres todos"></div>
     <div class="quatro todos"></div>
+    <div class="cinco todos"></div>
+    <div class="seis todos"></div>
+    <div class="sete todos"></div>
+    <div class="oito todos"></div>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <!-----------------------------------------------  Inicio parte de script ----------------------------------------------------->
@@ -93,7 +124,7 @@
 
       //  constantes
       const todos = document.querySelectorAll(".todos");
-
+      // console.log(todos);
       for (let contador = 0; contador < todos.length; contador++) {
         todos[contador].addEventListener("mousedown", function (e) {
           switch (e.buttons) {

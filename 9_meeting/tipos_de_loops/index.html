@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const array1 = [1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 9, 10];
+
+      //LOOP normal FOR
+      //   function retornarParesFOR(array) {
+      //     const numeroPar = [];
+
+      //     for (let x = 0; x < array.length; x++) {
+      //       if (array[x] % 2 === 0) {
+      //         numeroPar.push(array[x]);
+      //       }
+      //     }
+      //     return numeroPar;
+      //   }
+
+      //   console.log(retornarParesFOR(array1));
+      //
+      // functions mais elaboradas para LOOP  ------------
+      //
+
+      //LOOP - For IN Loop
+      // IN voce pega o INDEX/posicao
+      //   function retornarParesFORIN(array) {
+      //     const numeroPar = [];
+      //     //[1, 2, 3, 4, 5, 6, 7, 88, 8, 9, 10]
+      //     for (let contador in array) {
+      //       if (array[contador] % 2 === 0) {
+      //         numeroPar.push(array[contador]);
+      //       }
+      //     }
+
+      //     return numeroPar;
+      //   }
+      //   console.log(retornarParesFORIN(array1));
+
+      //LOOP - For Of Loop
+      // OF voce pega o elemento
+      //   function retornarParesFOROF(array) {
+      //     const numeroPar = [];
+      //     //[1, 2, 3, 4, 5, 6, 7, 88, 8, 9, 10]
+      //     for (let element of array) {
+      //       if (element % 2 === 0) {
+      //         numeroPar.push(element);
+      //       }
+      //     }
+
+      //     return numeroPar;
+      //   }
+      //   console.log(retornarParesFOROF(array1));
+
+      //LOOP - FOREACH
+      //   function retornarParesFOREACH(array) {
+      //     const numeroPar = [];
+
+      //     array.forEach((element) => {
+      //       if (element % 2 === 0) {
+      //         numeroPar.push(element);
+      //       }
+      //     });
+
+      //     return numeroPar;
+      //   }
+      //   console.log(retornarParesFOREACH(array1));
+
+      //   FILTER
+
+      function retornarParesFILTER(array) {
+        return array.filter((element) => {
+          return element % 2 === 0;
+        });
+      }
+      //   console.log(retornarParesFILTER(array1));
+
+      const filterT = (array) => array.filter((element) => element == 8);
+      console.log(filterT(array1));
+
+      // MAP
+      //   const mapTest = array1.map((element) => ({ dobro: element * 2 }));
+
+      //   console.log(mapTest);
+      //
+    </script>
+  </body>
+</html>

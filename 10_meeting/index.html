@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <title>CARROS</title>
+  <body>
+    <script>
+      //CONSTANTES
+      const body = document.querySelector("body");
+      const containerMenu = document.createElement("div");
+      const campoPesquisa = document.createElement("input");
+      const containerCarros = document.createElement("div");
+      //APPENDS
+      body.appendChild(containerMenu);
+      body.appendChild(containerCarros);
+      containerMenu.appendChild(campoPesquisa);
+      campoPesquisa.placeholder = "PESQUISAR";
+      //MAIN OBJECT
+      const obj = {
+        palio: {
+          title: "Palio GST com rodas 19",
+          motor: "1.0",
+          description: "Palio é um carro de viado",
+          imagen: "../9_meeting/new/hdk.html/imag_carros/palio.jpeg",
+        },
+        corsa: {
+          title: "Corsa gg",
+          motor: "1.0",
+          description: "quem tem Corsa gosta de dar o Toba ",
+          imagen: "../9_meeting/new/hdk.html/imag_carros/corsa.jpeg",
+        },
+        celta: {
+          title: "celta gg",
+          motor: " 1.0",
+          description: "quem tem celta gosta de dar o Toba ",
+          imagen: "../9_meeting/new/hdk.html/imag_carros/celta.jpeg",
+        },
+      };
+
+      //main screen creator loop
+      for (let criador in obj) {
+        const divCarro = document.createElement("div");
+        const tituloEl = document.createElement("h1");
+        const descricaoEl = document.createElement("p");
+        const imagenEl = document.createElement("img");
+        tituloEl.textContent = obj[criador].title;
+        descricaoEl.textContent = obj[criador].description;
+        imagenEl.src = obj[criador].imagen;
+        containerCarros.className = "carros";
+        containerCarros.appendChild(divCarro);
+        divCarro.appendChild(tituloEl);
+        divCarro.appendChild(descricaoEl);
+        divCarro.appendChild(imagenEl);
+        divCarro.className = criador;
+      }
+
+      //My input event
+      const keysObject = Object.keys(obj);
+      campoPesquisa.addEventListener("input", function (event) {
+          const filter = (array)=> array.filter((element) => element[0] == "p")
+          const filter2 = (array)=> array.filter((element) => element[0] == "c")
+          
+        if (event.target.value[0] == "p") {
+          console.log(filter(keysObject));
+        }
+        if(event.target.value[0] == "c"){
+            console.log(filter2(keysObject));
+        }
+      });
+    </script>
+  </body>
+</htm

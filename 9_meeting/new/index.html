@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="divMenu"></div>
+    <div class="divCarros"></div>
+    <script>
+      const divCarros = document.querySelector(".divCarros");
+      const divMenu = document.querySelector(".divMenu");
+      const obj = {
+        palio: {
+          title: "Palio GST com rodas 19",
+          motor: "1.0",
+          description: "Palio é um carro de viado",
+          imagen: "./hdk.html/imag_carros/palio.jpeg",
+        },
+        corsa: {
+          title: "Corsa gg",
+          motor: "1.0",
+          description: "quem tem Corsa gosta de dar o Toba ",
+          imagen: "./hdk.html/imag_carros/corsa.jpeg",
+        },
+        celta: {
+          title: "celta gg",
+          motor: " 1.0",
+          description: "quem tem celta gosta de dar o Toba ",
+          imagen: "./hdk.html/imag_carros/celta.jpeg",
+        },
+      };
+      const inputEl = document.createElement("input");
+      const keysObject = Object.keys(obj);
+
+      function iniciar() {
+        inputEl.placeholder = "pesquisa";
+        divMenu.appendChild(inputEl);
+        for (let criador = 0; criador < keysObject.length; criador++) {
+          const divCarro = document.createElement("div");
+          const titleEl = document.createElement("h1");
+          const descricaoEl = document.createElement("p");
+          const imageEl = document.createElement("img");
+
+          divCarro.className = keysObject[criador];
+          imageEl.src = obj[keysObject[criador]].imagen;
+          descricaoEl.textContent = obj[keysObject[criador]].description;
+          titleEl.textContent = obj[keysObject[criador]].title;
+
+          divCarro.appendChild(titleEl);
+          divCarro.appendChild(descricaoEl);
+          divCarro.appendChild(imageEl);
+
+          divCarros.appendChild(divCarro);
+        }
+      }
+      iniciar();
+      inputEl.addEventListener("input", function (event) {
+        // [palio,corsa,celta]
+        // keysObject
+        //limpa tela
+        if (event.target.value != "") {
+          for (let index = 0; index < keysObject.length; index++) {
+            divCarros.children[index].classList.add("hidden");
+          }
+        } else {
+          for (let index = 0; index < keysObject.length; index++) {
+            divCarros.children[index].classList.remove("hidden");
+          }
+        }
+        if (keysObject.includes(event.target.value)) {
+          //mostrar
+          divCarros.children[
+            keysObject.indexOf(event.target.value)
+          ].classList.remove("hidden");
+        } else {
+          for (let index = 0; index < keysObject.length; index++) {
+            divCarros.children[index].classList.add("hidden");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

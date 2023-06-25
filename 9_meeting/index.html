@@ -7,62 +7,203 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="containerA"></div>
-    <div class="containerB"></div>
+    <div class="containerA">
+      <div class="divMenu">
+        <button class="menu"></button>
+        <div class="menuItens">
+          <div class="itensMenu"></div>
+        </div>
+      </div>
+    </div>
+    <div class="containerB">
+      <img class="imagemCarro" src="" alt="" />
+    </div>
     <script>
       const obj = {
         palio: {
-          title: "palio GST com rodas 19",
+          title: "Palio GST com rodas 19",
           motor: "1.0",
           description: "Palio é um carro de viado",
+          imagen: "./hdk.html/imag_carros/palio.jpeg",
         },
         corsa: {
           title: "Corsa gg",
           motor: "1.0",
           description: "quem tem Corsa gosta de dar o Toba ",
+          imagen: "./hdk.html/imag_carros/corsa.jpeg",
         },
         celta: {
           title: "celta gg",
           motor: " 1.0",
           description: "quem tem celta gosta de dar o Toba ",
+          imagen: "./hdk.html/imag_carros/celta.jpeg",
         },
       };
 
-      //Criando Elementos
+      //creating elements
+      criarElemento("text", "p", ".containerA");
       criarElemento("input1", "input", ".containerA");
       criarElemento("btn_Pesquisar", "button", ".containerA");
-      criarElemento("container2", "div", ".containerB");
+      criarElemento("menuDiv", "button", ".menu");
+      criarElemento("btn_menuVoltar", "button", ".itensMenu");
+      criarElemento("palio carro", "button", ".itensMenu");
+      criarElemento("corsa carro", "button", ".itensMenu");
+      criarElemento("celta carro", "button", ".itensMenu");
       criarElemento("titulo", "h1", ".containerB");
       criarElemento("descriçao", "p", ".containerB");
       criarElemento("motor", "p", ".containerB");
       criarElemento("btn_Voltar", "button", ".containerB");
 
-      //Acessando Elementos
+      //Accessing ContainerA Elements
+      const containerA = document.querySelector(".containerA");
+      const text = document.querySelector(".text");
+      const pesquisar = document.querySelector(".input1");
       const btn_Pesquisar = document.querySelector(".btn_Pesquisar");
+      const btn_menu = document.querySelector(".menu");
+      const menu = document.querySelector(".menuItens");
+      const palio = document.querySelector(".palio");
+      const corsa = document.querySelector(".corsa");
+      const celta = document.querySelector(".celta");
+      const btn_menuVoltar = document.querySelector(".btn_menuVoltar");
+
+      //Accessing elements of containerB
       const containerB = document.querySelector(".containerB");
-      const btn_Voltar = document.querySelector(".btn_Voltar");
       const titulo = document.querySelector(".titulo");
       const motor = document.querySelector(".motor");
       const descriçao = document.querySelector(".descriçao");
+      const btn_Voltar = document.querySelector(".btn_Voltar");
+      const imagemCarro = document.querySelector(".imagemCarro");
 
-      btn_Pesquisar.textContent = "pesquisar";
-      btn_Voltar.textContent = "Voltar";
+      // text
+      text.textContent = "Digite no campo Abaixo o Carro desejado:";
+
+      //buttons text
+      btn_Pesquisar.textContent = "PESQUISAR";
+      btn_Voltar.textContent = "VOLTAR";
+      btn_menu.textContent = "MENU ";
+
+      // buttons text main menu
+      palio.textContent = "palio";
+      corsa.textContent = "corsa";
+      celta.textContent = "celta";
+      btn_menuVoltar.textContent = "X";
+
+      //button event
+      btn_menu.addEventListener("click", function () {
+        menu.style.display = "block";
+        btn_menu.style.display = "none";
+        pesquisar.style.display = "none";
+        btn_Pesquisar.style.display = "none";
+        text.style.display = "none";
+      });
+
+      btn_menuVoltar.addEventListener("click", function () {
+        iniciar();
+      });
+
+      //   const keysCarros = Object.keys(obj);
+      //   const allValues = Object.values(obj);
+      //   //   console.log(allValues);
+
+      //   //   console.log(keysCarros);
+      //   btn_Pesquisar.addEventListener("click", function () {
+      //     if (keysCarros.includes(pesquisar.value)) {
+      //       const blabla = pesquisar.value;
+      //       title.textContent = Object.values(obj[blabla]);
+      //       console.log(Object.values(obj[blabla]));
+      //       console.log(Object.values(obj.palio));
+      //       alert("existe");
+      //     } else {
+      //       alert("n existe");
+      //     }
+      //   });
 
       btn_Pesquisar.addEventListener("click", function () {
+        containerA.style.display = "none";
+        btn_menu.style.display = "none";
+        btn_Voltar.style.display = "block";
+        if (pesquisar.value == "palio") {
+          containerB.style.display = "block";
+          titulo.textContent = obj.palio.title;
+          motor.textContent = "motor=" + obj.palio.motor;
+          descriçao.textContent = obj.palio.description;
+          imagemCarro.setAttribute("src", obj.palio.imagen);
+        }
+        if (pesquisar.value == "corsa") {
+          containerB.style.display = "block";
+          titulo.textContent = obj.corsa.title;
+          motor.textContent = "motor=" + obj.corsa.motor;
+          descriçao.textContent = obj.corsa.description;
+          imagemCarro.setAttribute("src", obj.corsa.imagen);
+        }
+        if (pesquisar.value == "celta") {
+          containerB.style.display = "block";
+          titulo.textContent = obj.celta.title;
+          motor.textContent = "motor=" + obj.celta.motor;
+          descriçao.textContent = obj.celta.description;
+          imagemCarro.setAttribute("src", obj.celta.imagen);
+        }
+        if (pesquisar.value == "") {
+          alert("inserir text");
+          containerA.style.display = "block";
+          btn_menu.style.display = "block";
+          containerB.style.display = "none";
+          pesquisar.value = "";
+        }
+      });
+
+      btn_Voltar.addEventListener("click", function () {
+        iniciar();
+      });
+      //menu item event
+
+      //palio
+      palio.addEventListener("mouseover", function () {
         containerB.style.display = "block";
         titulo.textContent = obj.palio.title;
         motor.textContent = "motor=" + obj.palio.motor;
         descriçao.textContent = obj.palio.description;
+        imagemCarro.setAttribute("src", obj.palio.imagen);
+        btn_Voltar.style.display = "block";
       });
-      btn_Voltar.addEventListener("click", function () {
-        containerB.style.display = "none";
+
+      //corsa
+      corsa.addEventListener("mouseover", function () {
+        containerB.style.display = "block";
+        titulo.textContent = obj.corsa.title;
+        motor.textContent = "motor=" + obj.corsa.motor;
+        descriçao.textContent = obj.corsa.description;
+        imagemCarro.setAttribute("src", obj.corsa.imagen);
       });
+      //celta
+      celta.addEventListener("mouseover", function () {
+        containerB.style.display = "block";
+        titulo.textContent = obj.celta.title;
+        motor.textContent = "motor=" + obj.celta.motor;
+        descriçao.textContent = obj.celta.description;
+        imagemCarro.setAttribute("src", obj.celta.imagen);
+      });
+      //functions
       function criarElemento(classe, tag, container) {
         elemento = document.createElement(tag);
         document.querySelector(container).appendChild(elemento);
         elemento.className = classe;
       }
 
+      function iniciar() {
+        btn_menu.style.display = "block";
+        menu.style.display = "none";
+        btn_menu.style.display = "block";
+        pesquisar.style.display = "block";
+        btn_Pesquisar.style.display = "block";
+        containerA.style.display = "block";
+        menu.style.display = "none";
+        containerB.style.display = "none";
+        pesquisar.value = "";
+        text.style.display = "block";
+        btn_Voltar.style.display = "none";
+      }
+      iniciar();
       //   const body = document.querySelector("body");
       //   const container1 = document.createElement("div");
       //   const container2 = document.createElement("div");

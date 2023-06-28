@@ -56,19 +56,38 @@
         divCarro.className = criador;
       }
 
-      //My input event
       const keysObject = Object.keys(obj);
+      const arrayInput=[];
+      //My input event
       campoPesquisa.addEventListener("input", function (event) {
-          const filter = (array)=> array.filter((element) => element[0] == "p")
-          const filter2 = (array)=> array.filter((element) => element[0] == "c")
+        arrayInput.push(event.target.value)
+        console.log(arrayInput);
+        const filter = (array)=> array.filter((element) => element[0] == "p")
           
+        const filter2 = (array)=> array.filter((element) => element[0] == "c")
+          
+
         if (event.target.value[0] == "p") {
-          console.log(filter(keysObject));
+       const  carro = keysObject.filter(car => car =='palio')
+          console.log(carro)
         }
         if(event.target.value[0] == "c"){
-            console.log(filter2(keysObject));
+            const carro=keysObject.filter(car => car[0]== "c")
+        console.log(carro);
         }
+    
+        if(event.target.value[1] == "o"){
+            const carro=keysObject.filter(car => car[1]== "")
+        console.log(carro);
+        }
+    
       });
+       campoPesquisa.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if (key === "Backspace" || key === "Delete") {
+             arrayInput.pop(event.target.value)
+            }})
+            console.log(arrayInput);
     </script>
   </body>
 </htm

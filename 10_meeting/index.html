@@ -8,6 +8,7 @@
   <body>
     <script>
       //CONSTANTES
+     
       const body = document.querySelector("body");
       const containerMenu = document.createElement("div");
       const campoPesquisa = document.createElement("input");
@@ -40,61 +41,73 @@
       };
 
       //main screen creator loop
-      for (let criador in obj) {
+       function iniciciar(array){
+      for (let criador in array) {
         const divCarro = document.createElement("div");
         const tituloEl = document.createElement("h1");
         const descricaoEl = document.createElement("p");
         const imagenEl = document.createElement("img");
-        tituloEl.textContent = obj[criador].title;
-        descricaoEl.textContent = obj[criador].description;
-        imagenEl.src = obj[criador].imagen;
+        tituloEl.textContent = array[criador].title;
+        descricaoEl.textContent = array[criador].description;
+        imagenEl.src = array[criador].imagen;
         containerCarros.className = "carros";
         containerCarros.appendChild(divCarro);
         divCarro.appendChild(tituloEl);
         divCarro.appendChild(descricaoEl);
         divCarro.appendChild(imagenEl);
         divCarro.className = criador;
-      }
+      }}
+      iniciciar(obj)
+     
+       const keysobj=Object.keys(obj)
+       console.log(keysobj);
+        campoPesquisa.addEventListener("input",function(el){
+          const pesquisa=obj.filter((elemento)=>{
+              if(elemento.icludes(el.target.value)){
+                
+              return elemento;
+            }
+        })
+      })
 
-      const keysObject = Object.keys(obj);
       const arrayInput=[];
       //My input event
-      campoPesquisa.addEventListener("input", function (event) {
-        console.log(arrayInput);
-        const filter = (array)=> array.filter((element) => element[0] == "p")
+    //   campoPesquisa.addEventListener("input", function (event) {
+    //     console.log(arrayInput);
+    //     const filter = (array)=> array.filter((element) => element[0] == "p")
           
-        const filter2 = (array)=> array.filter((element) => element[0] == "c")
+    //     const filter2 = (array)=> array.filter((element) => element[0] == "c")
           
 
-        if (event.target.value[0] == "p") {
-       const  carro = keysObject.filter(car => car =='palio')
-       arrayInput.push(carro)
-        }
-        if(event.target.value[0] == "c"){
-            const carro=keysObject.filter(car => car[0]== "c")
-            arrayInput.pop()
-            arrayInput.push(carro)
-        }
+    //     if (event.target.value[0] == "p") {
+    //    const  carro = keysObject.filter(car => car =='palio')
+    //    arrayInput.push(carro)
+    //     }
+    //     if(event.target.value[0] == "c"){
+    //         const carro=keysObject.filter(car => car[0]== "c")
+    //         arrayInput.pop()
+    //         arrayInput.push(carro)
+    //     }
     
-        if(event.target.value[1] == "o"){
-            const carro=keysObject.filter(car => car[1] == "o")
-            arrayInput.pop()
-            arrayInput.push(carro)
-        }
-        if(event.target.value[1] == "e"){
-            const carro=keysObject.filter(car => car[1] == "e")
-            arrayInput.pop()
-            arrayInput.push(carro)
-        }
-    });
-    campoPesquisa.addEventListener('keydown', function(event) {
-        const key = event.key;
-        if (key === "Backspace" || key === "Delete") {
-           arrayInput.shift()
-            arrayInput.pop()
-        }})
-        console.log(carro);
-            console.log(arrayInput);
+    //     if(event.target.value[1] == "o"){
+    //         const carro=keysObject.filter(car => car[1] == "o")
+    //         arrayInput.pop()
+    //         arrayInput.push(carro)
+    //     }
+    //     if(event.target.value[1] == "e"){
+    //         const carro=keysObject.filter(car => car[1] == "e")
+    //         arrayInput.pop()
+    //         arrayInput.push(carro)
+    //     }
+    // });
+    // campoPesquisa.addEventListener('keydown', function(event) {
+    //     const key = event.key;
+    //     if (key === "Backspace" || key === "Delete") {
+    //        arrayInput.shift()
+    //         arrayInput.pop()
+    //     }})
+    //     console.log(carro);
+    //         console.log(arrayInput);
     </script>
   </body>
 </htm

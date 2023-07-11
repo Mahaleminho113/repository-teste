@@ -39,7 +39,7 @@
       //   [car1, car2, car3]
       const carsKeys = Object.keys(carsObj);
       // initializing cars list and adding to DOM
-      const initCars = (carsArray) => {
+      initCars = (carsArray) => {
         const divCar = document.createElement("div");
 
         carsArray.forEach((element) => {
@@ -65,7 +65,7 @@
         });
         divCarS.innerHTML = "";
         initCars(newCarKeys);
-        console.log(e.target.value);
+        console.log(newCarKeys);
       });
     </script>
   </body>

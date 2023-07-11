@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="testingOBJ"></div>
+    <script>
+      const test = document.querySelector(".testingOBJ");
+      test.textContent = "blabla";
+      const obj = {
+        palio: {
+          title: "palio GST com rodas 19",
+          motor: 1.0,
+          description: "Palio é um carro de viado",
+        },
+        corsa: {
+          title: "Corsa gg",
+          motor: 1.0,
+          description: "quem tem Corsa gosta de dar o Toba ",
+        },
+        celta: {
+          title: "celta gg",
+          motor: 1.0,
+          description: "quem tem celta gosta de dar o Toba ",
+        },
+      };
+      const search = "palio";
+      let keys = Object.keys(obj);
+      console.log(keys);
+      if (keys.includes(search)) {
+        console.log(`includes ${search}`);
+        const h1Title = document.createElement("h1");
+        const spanMotor = document.createElement("span");
+        const pDescription = document.createElement("p");
+
+        h1Title.textContent = `Title: ${obj[search]["title"]}`;
+        spanMotor.textContent = `motor: ${obj[search]["motor"]}`;
+        pDescription.textContent = `Description: ${obj[search]["description"]}`;
+
+        test.appendChild(h1Title);
+        test.appendChild(spanMotor);
+        test.appendChild(pDescription);
+      } else {
+        console.log(`does not include ${search}`);
+      }
+    </script>
+  </body>
+</html>

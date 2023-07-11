@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const users = [
+        { id: 1, username: "Apple", active: true, age: 20 },
+        { id: 2, username: "Banana", active: false, age: 35 },
+        { id: 3, username: "Ear", active: false, age: 60 },
+        { id: 4, username: "Dog", active: true, age: 65 },
+        { id: 5, username: "Cat", active: true, age: 80 },
+        { id: 6, username: "Ear", active: true, age: 95 },
+      ];
+      //primitivo
+      //   console.log(users[0]);
+      const newArray = [];
+      for (let x = 0; x < users.length; x++) {
+        // console.log(users[x]);
+        if (users[x].active) {
+          newArray.push(users[x]);
+        }
+      }
+
+      //   console.log(newArray);
+      //minha resolucao
+      function usuariosAtivos(array) {
+        const usuariosAtivos = array.filter(function (el) {
+          if (el.active) {
+            return el;
+          }
+        });
+        // console.log(usuariosAtivos);
+      }
+      usuariosAtivos(users);
+      //resolucao simplificada
+      const activesUsers = users.filter((user) => user.active);
+      //   console.log(activesUsers);
+      const usersMaisVelhos = users.filter((user) => user.age >= 60);
+      //   console.log(usersMaisVelhos);
+
+      //   const mapMaisVelhos = users.map((user) => {
+      //     if (user.age >= 60) {
+      //       return user.username;
+      //     } else {
+      //       return "";
+      //     }
+      //     // return user.age >= 60 ? user : "";
+      //   });
+
+      //   console.log(mapMaisVelhos);
+
+      //   const teste = users.map((user) => (user.age >= 60 ? user : ""));
+      //   console.log(teste);
+
+      const teste = users.map((user, index, array) => {
+        console.log("usuario: ");
+        console.log(user);
+        console.log("Posicao: ");
+        console.log(index);
+        console.log("Array: ");
+        console.log(array);
+      });
+      teste();
+    </script>
+  </body>
+</html>

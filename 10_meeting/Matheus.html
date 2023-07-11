@@ -6,19 +6,19 @@
   </head>
   <title>CARROS</title>
   <body>
+    <div class="menu"></div>
+    <div class="containerCarros"></div>
     <script>
       //CONSTANTES
-     
-      const body = document.querySelector("body");
-      const containerMenu = document.createElement("div");
+      const mainMenu = document.querySelector(".menu");
+      const containerCarros = document.querySelector(".containerCarros");
       const campoPesquisa = document.createElement("input");
-      const containerCarros = document.createElement("div");
-      //APPENDS
-      body.appendChild(containerMenu);
-      body.appendChild(containerCarros);
-      containerMenu.appendChild(campoPesquisa);
+     
+      //APPENDS + texto no espaço livre do campoPesquisa
+      mainMenu.appendChild(campoPesquisa);
       campoPesquisa.placeholder = "PESQUISAR";
-      //MAIN OBJECT
+
+      //MAIN OBJECT + MAIN ARRAY 
       const obj = {
         palio: {
           title: "Palio GST com rodas 19",
@@ -39,38 +39,37 @@
           imagen: "../9_meeting/new/hdk.html/imag_carros/celta.jpeg",
         },
       };
-
-      //main screen creator loop
-       function iniciciar(array){
-      for (let criador in array) {
+      const keysobj=Object.keys(obj)
+      console.log(keysobj);
+       //MAIN FUNCTION 
+       function  iniciciar(array)  {
         const divCarro = document.createElement("div");
+
+        array.forEach((criador) => {
         const tituloEl = document.createElement("h1");
         const descricaoEl = document.createElement("p");
         const imagenEl = document.createElement("img");
-        tituloEl.textContent = array[criador].title;
-        descricaoEl.textContent = array[criador].description;
-        imagenEl.src = array[criador].imagen;
-        containerCarros.className = "carros";
-        containerCarros.appendChild(divCarro);
+        tituloEl.textContent = obj[criador].title;
+        descricaoEl.textContent = obj[criador].description;
+        imagenEl.src = obj[criador].imagen;
         divCarro.appendChild(tituloEl);
         divCarro.appendChild(descricaoEl);
         divCarro.appendChild(imagenEl);
-        divCarro.className = criador;
-      }}
-      iniciciar(obj)
-     
-       const keysobj=Object.keys(obj)
-       console.log(keysobj);
-        campoPesquisa.addEventListener("input",function(el){
-          const pesquisa=obj.filter((elemento)=>{
-              if(elemento.icludes(el.target.value)){
-                
-              return elemento;
-            }
-        })
-      })
-
-      const arrayInput=[];
+        containerCarros.appendChild(divCarro);
+     });
+    };
+      iniciciar(keysobj);
+        campoPesquisa.addEventListener("input", function(e)  {
+        const newCar = keysobj.filter((carro) => {
+          if (carro.includes(e.target.value)) {
+            return carro;
+          }
+        });
+        containerCarros.innerHTML = "";
+        iniciciar(newCar);
+        console.log(e.target.value);
+      });
+      // const arrayInput=[];
       //My input event
     //   campoPesquisa.addEventListener("input", function (event) {
     //     console.log(arrayInput);

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mainMenu"></div>
+    <div class="divCarros"></div>
+    <script>
+      // MINHAS CONSTANTES
+      const mainMenu = document.querySelector(".mainMenu");
+      const divCarros = document.querySelector(".divCarros");
+      const search = document.createElement("input");
+      mainMenu.appendChild(search);
+      search.placeholder = "PESQUISAR";
+
+      // MEU OBJETO
+      //   const carsObj = {
+      const cars = [
+        {
+          name: "palio",
+          title: "palio GST com rodas 19",
+          motor: 1.0,
+          description: "Palio é um carro de viado",
+          img: "../hdk.html/imag_carros/palio.jpeg",
+        },
+        {
+          name: "corsa",
+          title: "Corsa gg",
+          motor: 1.0,
+          description: "quem tem Corsa gosta de dar o Toba ",
+          img: "../hdk.html/imag_carros/corsa.jpeg",
+        },
+        {
+          name: "celta",
+          title: "celta gg",
+          motor: 1.0,
+          description: "quem tem celta gosta de dar o Toba ",
+          img: "../hdk.html/imag_carros/celta.jpeg",
+        },
+        {
+          name: "cooo",
+          title: "cooo gg",
+          motor: 1.0,
+          description: "quem tem celta gosta de dar o Toba ",
+          img: "../hdk.html/imag_carros/palio.jpeg",
+        },
+        {
+          name: "ceeeee",
+          title: "ceeeee gg",
+          motor: 1.0,
+          description: "quem tem celta gosta de dar o Toba ",
+          img: "../hdk.html/imag_carros/palio.jpeg",
+        },
+      ];
+      // example for motorcicles
+      //     motorcicles: [],
+      //   };
+      const description = cars.map((item) => "Descriçao:" + item.description);
+      // console.log(description);
+      function iniciar(array) {
+        const carros = document.createElement("div");
+
+        for (criador in array) {
+          const dadosEl = document.createElement("p");
+          const imgEl = document.createElement("img");
+          dadosEl.textContent = description[criador];
+          imgEl.src = cars[criador].img;
+          carros.appendChild(imgEl);
+          carros.appendChild(dadosEl);
+          divCarros.appendChild(carros);
+        }
+      }
+      iniciar(description);
+
+      const names = cars.map((carros) => carros.name);
+      console.log(names);
+      search.addEventListener("input", function (e) {
+        const newCar = names.filter((carro) => {
+          if (carro.includes(e.target.value)) {
+            return carro;
+          }
+        });
+        console.log(newCar);
+        divCarros.innerHTML = "";
+        iniciar(newCar);
+      });
+    </script>
+  </body>
+</html>

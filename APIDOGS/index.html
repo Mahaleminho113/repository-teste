@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="images"></div>
+    <script>
+      const divImages = document.querySelector(".images");
+      const url = "https://dog.ceo/api/breeds/image/random/5";
+
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function (data) {
+          const arrayImages = data.message;
+          arrayImages.forEach((element) => {
+            const raca = element.split("/")[4];
+            console.log(raca);
+            const imagem = document.createElement("img");
+            const tituloEl = document.createElement("h1");
+            tituloEl.textContent = raca;
+            imagem.src = element;
+            divImages.appendChild(imagem);
+            divImages.appendChild(tituloEl);
+            console.log(element);
+            imagem.addEventListener("click", function () {
+              const url =
+                "https://dog.ceo/api/breeds/" +
+                tituloEl.textContent +
+                "image/random/5";
+              fetch(url).then((resp) => resp.json());
+              console.log(url);
+            });
+          });
+        })
+
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

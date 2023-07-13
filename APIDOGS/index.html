@@ -15,7 +15,7 @@
     <div class="images"></div>
     <script>
       const divImages = document.querySelector(".images");
-      const url = "https://dog.ceo/api/breeds/image/random/5";
+      const url = "https://dog.ceo/api/breeds/image/random/3";
 
       fetch(url)
         .then((resp) => resp.json())
@@ -30,13 +30,13 @@
             imagem.src = element;
             divImages.appendChild(imagem);
             divImages.appendChild(tituloEl);
-            console.log(element);
+            const au = tituloEl.textContent.split("-");
+            const au1 = au.pop();
+            console.log(au);
             imagem.addEventListener("click", function () {
-              const url =
-                "https://dog.ceo/api/breeds/" +
-                tituloEl.textContent +
-                "image/random/5";
-              fetch(url).then((resp) => resp.json());
+              const url = "https://dog.ceo/api/breed/" + "/images";
+              tituloEl.textContent;
+
               console.log(url);
             });
           });

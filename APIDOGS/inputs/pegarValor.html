@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>valor da option selecionada</title>
+  </head>
+  <body>
+    <form action="">
+      <select name="options" id="options" multiple size="4">
+        <option value="a">letra a</option>
+        <option value="b">letra b</option>
+        <option value="c">letra c</option>
+        <option value="d">letra d</option>
+      </select>
+    </form>
+    <script>
+      const select = document.querySelector("#options");
+
+      select.addEventListener("click", function () {
+        console.log(select.value);
+      });
+      const indice = select.selectedIndex;
+      const valor = select.value;
+      const text = select.options[indice].text;
+    </script>
+  </body>
+</html>

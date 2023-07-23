@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Exemplo 1  select  </h1>
+    <h2>Uma lista de seleção simples, com duas opções, e apenas uma possibilidade de escolha:</h2>
+    <label>Disponível para Viajar?</a>
+<select name="viagem">
+    <option value="sim">Sim</option>
+    <option value="nao">Não</option>
+</select>
+
+<h1>Exemplo 2  select  </h1>
+<h2>Aqui temos um exemplo de uma lista um pouco maior, utilizando required para impedir uma seleção com valor vazio:</h2>
+<form>
+    <label>Qual é a sua linguagem de programação principal?</label>
+    <select name="linguagem" required="required">
+        <option value="">Escolha uma linguagem de programação</option>
+        <option value="csharp">C#</option>
+        <option value="php">PHP</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+        <option value="cpp">C++</option>
+    </select>
+  <button type="submit">Enviar</button>
+</form>
+
+<h1>Exemplo 3  select  </h1>
+<h2>Por fim, temos um exemplo de uma lista de seleção múltipla, onde o usuário pode escolher quantas opções preferir:</h2>
+<form>
+    <label>Quais linguagens você conhece?</label>
+    <select name="linguagem"multiple size="">
+        <option value="csharp">C#</option>
+        <option value="php">PHP</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+        <option value="cpp">C++</option>
+    </select>
+</form>
+
+<h1>Exemplo atributo name</h1>
+<h2>O atributo name é essencial quando vamos utilizar o select dentro de um formulário, pois é através dele que o valor será recebido no back-end</h2>
+<form>
+    <select name="plataforma">
+        <option value="">Escolha uma plataforma de jogos</option>
+        <option value="xbox">Xbox Series</option>
+        <option value="ps5">PS5</option>
+        <option value="nsw">Nintendo Switch</option>
+        <option value="pcg">PC Gaming</option>
+    </select>
+    </form>
+ 
+    <h1>Exemplo atributo required </h1>
+    <h2>O atributo required indica que esse campo é obrigatório, e portanto, a opção selecionada não deve ter valor vazio</h2>
+
+    Deixe a opção <b>Escolha uma plataforma de jogos</b> maracada e clique em enviar para ver o comportamento do required: 
+
+<form>
+    <select name="plataforma" required="required">
+        <option value="">Escolha uma plataforma de jogos</option>
+        <option value="xbox">Xbox Series</option>
+        <option value="ps5">PS5</option>
+        <option value="nsw">Nintendo Switch</option>
+        <option value="pcg">PC Gaming</option>
+    </select>
+    <button type="submit">Enviar</button>
+</form>
+
+ <h1>Exemplo atributo multiple </h1>
+ <h2>Modifica a lista de seleção para que o usuário possa escolher mais de uma opção.</h2>
+ Segure a tecla <b>ctrl</b> e clique com o mouse nas opções que deseja selecionar: 
+<br><br>
+<form>
+    <select name="plataforma" required="required" multiple>
+        <option value="">Escolha uma plataforma de jogos</option>
+        <option value="xbox">Xbox Series</option>
+        <option value="ps5">PS5</option>
+        <option value="nsw">Nintendo Switch</option>
+        <option value="pcg">PC Gaming</option>
+    </select>
+</form>
+
+<h1>Exemplo atributo  size  </h1> 
+<h2>Utilizada em conjunto com o atributo multiple para definir quantos itens devem aparecer por vez na lista de seleção.</h2>
+Veja que agora a lista exibe 5 opções sem precisar de scroll para visualizá-las.
+
+Segure a tecla <b>ctrl</b> e clique com o mouse nas opções que deseja selecionar: 
+<br><br>
+<form>
+    <select name="plataforma" class="plataforma1" required="required" multiple size="5">
+        <option value="">Escolha uma plataforma de jogos</option>
+        <option value="xbox">Xbox Series</option>
+        <option value="ps5">PS5</option>
+        <option value="nsw">Nintendo Switch</option>
+        <option value="pcg">PC Gaming</option>
+    </select>
+</form>
+</body>
+</html>

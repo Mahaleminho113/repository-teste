@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+      }
+
+      img {
+        border: 1px solid black;
+        width: 150px;
+      }
+
+      .images {
+        display: grid;
+        grid-template-rows: 200px 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px 200px;
+        gap: 20px;
+      }
+      .elementos {
+        display: flex;
+        padding-top: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .elementos:hover {
+        border: 3px solid black;
+      }
+      .button {
+        padding-right: 95%;
+        padding-top: 3px;
+        position: fixed;
+        display: none;
+      }
+      .btn_voltar {
+        border: none;
+        width: 50px;
+        height: 50px;
+      }
+      .btn_voltar:hover {
+        width: 60px;
+        height: 60px;
+      }
+
+      h3 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input">
+      <div class="button"></div>
+      <div class="menu"></div>
+      <div class="text">Filtre por Raça:</div>
+      <div class="form"></div>
+    </div>
+    <div class="images"></div>
+    <script>
+      //minhas constates
+      const divButton = document.querySelector(".button");
+      const divImages = document.querySelector(".images");
+      const menu = document.querySelector(".menu");
+      const url = "https://dog.ceo/api/breeds/image/random/50";
+      const arrayDog = [];
+      const search = document.createElement("input");
+      search.placeholder = "PESQUISAR";
+      menu.appendChild(search);
+
+      //minha function Iniciar
+      function iniciar(url) {
+        fetch(url)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            const arrayImages = data.message;
+            arrayImages.forEach((element) => {
+              const url = element;
+              const raca = element.split("/")[4];
+              const divElementos = document.createElement("div");
+              divElementos.className = "elementos";
+              const imagem = document.createElement("img");
+              const tituloEl = document.createElement("h3");
+              tituloEl.textContent = raca;
+              // imagem.src = element;
+              divImages.appendChild(divElementos);
+              divElementos.style.backgroundImage = `url(${url})`;
+              divElementos.style.height = "150px";
+              // divElementos.style.height = "35px";
+              divElementos.style.webkitBackgroundSize = "cover";
+              divElementos.style.backgroundPosition = "centro centro";
+              // divElementos.appendChild(imagem);
+              divElementos.appendChild(tituloEl);
+              const au = tituloEl.textContent.split("-");
+              const au1 = au[0];
+
+              arrayDog.push(au1);
+
+              // console.log(au1);
+
+              divElementos.addEventListener("click", function () {
+                divButton.style.display = "block";
+                // console.log(au1);
+                const urlN = "https://dog.ceo/api/breed/" + au1 + "/images";
+                // console.log("object");
+                divImages.innerHTML = "";
+                iniciar(urlN);
+              });
+            });
+
+            search.addEventListener("input", function (e) {
+              const newArray = arrayDog.map((el) =>
+                el.name.includes(e.target.value) ? el : ""
+              );
+              //   .filter(Boolean);
+              console.log(newArray);
+              // console.log(newArray);
+              divImages.innerHTML = "";
+              iniciar(newArray);
+            });
+
+            console.log(arrayDog[5]);
+            const divform = document.querySelector(".form");
+            const form = document.createElement("form");
+            const selected = document.createElement("select");
+            divform.appendChild(form);
+            form.appendChild(selected);
+            arrayDog.forEach(function (raca) {
+              const option = document.createElement("option");
+              option.value = "https://dog.ceo/api/breed/" + raca + "/images";
+              if (raca == "todos") {
+                option.value = "https://dog.ceo/api/breeds/image/random/50";
+              }
+              option.textContent = raca;
+              selected.appendChild(option);
+            });
+
+            selected.addEventListener("change", function () {
+              const dog = selected.value;
+              console.log(dog);
+              divImages.innerHTML = "";
+
+              iniciar(dog);
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      iniciar(url);
+      //criando meu botão voltar como imagem
+      const btn_voltar = document.createElement("img");
+      // endereço da minha imagem
+      btn_voltar.src = "../11_meeting/seta.png";
+      //classe da minha imagem
+      btn_voltar.className = "btn_voltar";
+      //append da minha imagem na div de classe button
+      divButton.appendChild(btn_voltar);
+      //evento ao clicar na minha imagem
+      btn_voltar.addEventListener("click", function () {
+        //escondendo o a minha imagem ao clicar nela adicionando o style dela como none
+        divButton.style.display = "none";
+        //limpando meu HTml
+        divImages.innerHTML = "";
+        //chamando a funçao com o url do inicio raças aleatorias
+        iniciar(url);
+      });
+
+      // tarefa
+      //retirar elemento img usar como background
+      //Criar  search com filter
+      //drop select com todas as raças  da tela
+    </script>
+  </body>
+</html>

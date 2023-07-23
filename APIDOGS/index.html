@@ -6,21 +6,32 @@
     <title>Document</title>
     <style>
       body {
+        position: relative;
         background-color: #ffffff;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
       }
 
       img {
         border: 1px solid black;
         width: 150px;
-        height: 150px;
       }
 
       .images {
+        padding-top: 100px;
+        width: 90%;
         display: grid;
-        grid-template-rows: 200px 200px 200px 200px;
-        grid-template-columns: 200px 200px 200px 200px;
+        grid-template-columns: repeat(auto-fit, 180px);
+        /* display: flex;
+        flex-wrap: wrap; */
+        /* max-width: 600px; */
+        /* grid-auto-rows: 100px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+        /* display: grid;
+        grid-template-rows: 200px 200px;
+        grid-template-columns: auto auto auto auto; */
         gap: 20px;
       }
       .elementos {
@@ -28,7 +39,8 @@
         padding-top: 20px;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        border: 3px solid white;
       }
 
       .elementos:hover {
@@ -49,33 +61,73 @@
         width: 60px;
         height: 60px;
       }
+
+      form {
+        padding-bottom: 50px;
+        padding-left: 5px;
+      }
+
+      .input {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        top: 0px;
+        padding-top: 5px;
+        background-color: white;
+      }
+      .text {
+        padding-left: 40%;
+      }
     </style>
   </head>
   <body>
-    <div class="button"></div>
+    <!-- minhas divs -->
 
+    <div class="input">
+      <div class="button"></div>
+      <div class="text">Filtre por Raça:</div>
+      <div class="form"></div>
+    </div>
     <div class="images"></div>
     <script>
+      function somar(Pnum, Snum) {
+        return Pnum + Snum;
+      }
+      console.log(somar(5, 7));
+
+      const obj = {
+        message: [
+          "https://images.dog.ceo/breeds/lhasa/n02098413_20304.jpg",
+          "https://images.dog.ceo/breeds/terrier-silky/n02097658_955.jpg",
+          "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_332.jpg",
+          "https://images.dog.ceo/breeds/rottweiler/n02106550_1889.jpg",
+          "https://images.dog.ceo/breeds/husky/n02110185_11635.jpg",
+          "https://images.dog.ceo/breeds/redbone/n02090379_4632.jpg",
+          "https://images.dog.ceo/breeds/pointer-germanlonghair/hans3.jpg",
+        ],
+        status: "success",
+        status: "success",
+        status: "success",
+        status: "success",
+        status: "success",
+      };
+      //minhas constates
       const divButton = document.querySelector(".button");
       const divImages = document.querySelector(".images");
-      const btn_voltar = document.createElement("img");
-      btn_voltar.src = "../11_meeting/seta.png";
-      btn_voltar.className = "btn_voltar";
-      divButton.appendChild(btn_voltar);
-      btn_voltar.addEventListener("click", function () {
-        divButton.style.display = "none";
-        divImages.innerHTML = "";
-        iniciar(url);
-      });
       const url = "https://dog.ceo/api/breeds/image/random/50";
       const arrayDog = [];
+
+      //minha function Iniciar
       function iniciar(url) {
         fetch(url)
           .then((resp) => resp.json())
-          .then(function (data) {
-            const arrayImages = data.message;
+          .then(function (imagensR) {
+            const arrayImages = imagensR.message;
+            // console.log(imagensR);
             arrayImages.forEach((element) => {
               const raca = element.split("/")[4];
+              // racas.push(raca);
               const divElementos = document.createElement("div");
               divElementos.className = "elementos";
               const imagem = document.createElement("img");
@@ -85,15 +137,20 @@
               divImages.appendChild(divElementos);
               divElementos.appendChild(imagem);
               divElementos.appendChild(tituloEl);
-              const au = tituloEl.textContent.split("-");
-              const au1 = au[0];
 
-              console.log(au1);
+              // const au = tituloEl.textContent.split("-");
+              // const au1 = au[0];
+
+              // // console.log(au1);
 
               divElementos.addEventListener("click", function () {
+                console.log(tituloEl.textContent.split("-")[0]);
                 divButton.style.display = "block";
-                console.log(au1);
-                const urlN = "https://dog.ceo/api/breed/" + au1 + "/images";
+                // console.log(au1);
+                const urlN =
+                  "https://dog.ceo/api/breed/" +
+                  tituloEl.textContent.split("-")[0] +
+                  "/images";
                 console.log("object");
                 divImages.innerHTML = "";
                 iniciar(urlN);
@@ -105,6 +162,56 @@
           });
       }
       iniciar(url);
+      //criando meu botão voltar como imagem
+      const btn_voltar = document.createElement("img");
+      // endereço da minha imagem
+      btn_voltar.src = "../11_meeting/seta.png";
+      //classe da minha imagem
+      btn_voltar.className = "btn_voltar";
+      //append da minha imagem na div de classe button
+      divButton.appendChild(btn_voltar);
+      //evento ao clicar na minha imagem
+      btn_voltar.addEventListener("click", function () {
+        //escondendo o a minha imagem ao clicar nela adicionando o style dela como none
+        divButton.style.display = "none";
+        //limpando meu HTml
+        divImages.innerHTML = "";
+        //chamando a funçao com o url do inicio raças aleatorias
+        iniciar(url);
+      });
+
+      const arrayRacas = [
+        "todos",
+        "dingo",
+        "vizsla",
+        "papillon",
+        "stbernard",
+        "pyrenees",
+        "puggle",
+      ];
+
+      const select = document.querySelector("#options");
+      const divform = document.querySelector(".form");
+      const form = document.createElement("form");
+      const selected = document.createElement("select");
+      divform.appendChild(form);
+      form.appendChild(selected);
+      arrayRacas.forEach(function (raca) {
+        const option = document.createElement("option");
+        option.value = "https://dog.ceo/api/breed/" + raca + "/images";
+        if (raca == "todos") {
+          option.value = "https://dog.ceo/api/breeds/image/random/50";
+        }
+        option.textContent = raca;
+        selected.appendChild(option);
+      });
+
+      selected.addEventListener("change", function () {
+        const dog = selected.value;
+        console.log(dog);
+        divImages.innerHTML = "";
+        iniciar(dog);
+      });
     </script>
   </body>
 </html>

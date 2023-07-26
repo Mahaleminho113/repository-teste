@@ -39,6 +39,9 @@
         position: fixed;
         display: none;
       }
+      .buttono {
+        padding-top: 300px;
+      }
       .btn_voltar {
         border: none;
         width: 50px;
@@ -55,8 +58,10 @@
     </style>
   </head>
   <body>
+    <div class="button"></div>
+    <div><button class="buttono">eu</button></div>
+
     <div class="input">
-      <div class="button"></div>
       <div class="menu"></div>
       <div class="text">Filtre por Raça:</div>
       <div class="form"></div>
@@ -64,6 +69,7 @@
     <div class="images"></div>
     <script>
       //minhas constates
+      const buttono = document.querySelector(".buttono");
       const divButton = document.querySelector(".button");
       const divImages = document.querySelector(".images");
       const menu = document.querySelector(".menu");
@@ -79,74 +85,61 @@
           .then((resp) => resp.json())
           .then(function (data) {
             const arrayImages = data.message;
-            arrayImages.forEach((element) => {
-              const url = element;
-              const raca = element.split("/")[4];
-              const divElementos = document.createElement("div");
-              divElementos.className = "elementos";
-              const imagem = document.createElement("img");
-              const tituloEl = document.createElement("h3");
-              tituloEl.textContent = raca;
-              // imagem.src = element;
-              divImages.appendChild(divElementos);
-              divElementos.style.backgroundImage = `url(${url})`;
-              divElementos.style.height = "150px";
-              // divElementos.style.height = "35px";
-              divElementos.style.webkitBackgroundSize = "cover";
-              divElementos.style.backgroundPosition = "centro centro";
-              // divElementos.appendChild(imagem);
-              divElementos.appendChild(tituloEl);
-              const au = tituloEl.textContent.split("-");
-              const au1 = au[0];
+            // console.log(arrayImages);
 
-              arrayDog.push(au1);
+            arrayDog.push(arrayImages);
 
-              // console.log(au1);
+            // arrayImages.forEach((element) => {
+            //   const url = element;
+            //   const raca = element.split("/")[4];
+            //   const divElementos = document.createElement("div");
+            //   divElementos.className = "elementos";
+            //   const imagem = document.createElement("img");
+            //   const tituloEl = document.createElement("h3");
+            //   tituloEl.textContent = raca;
+            //   // imagem.src = element;
+            //   divImages.appendChild(divElementos);
+            //   divElementos.style.backgroundImage = `url(${url})`;
+            //   divElementos.style.height = "150px";
+            //   // divElementos.style.height = "35px";
+            //   divElementos.style.webkitBackgroundSize = "cover";
+            //   divElementos.style.backgroundPosition = "centro centro";
+            //   // divElementos.appendChild(imagem);
+            //   divElementos.appendChild(tituloEl);
+            //   const au = tituloEl.textContent.split("-");
+            //   const au1 = au[0];
 
-              divElementos.addEventListener("click", function () {
-                divButton.style.display = "block";
-                // console.log(au1);
-                const urlN = "https://dog.ceo/api/breed/" + au1 + "/images";
-                // console.log("object");
-                divImages.innerHTML = "";
-                iniciar(urlN);
-              });
-            });
+            //   arrayDog.push(au1);
 
-            search.addEventListener("input", function (e) {
-              const newArray = arrayDog.map((el) =>
-                el.name.includes(e.target.value) ? el : ""
-              );
-              //   .filter(Boolean);
-              console.log(newArray);
-              // console.log(newArray);
-              divImages.innerHTML = "";
-              iniciar(newArray);
-            });
+            //   // console.log(au1);
 
-            console.log(arrayDog[5]);
-            const divform = document.querySelector(".form");
-            const form = document.createElement("form");
-            const selected = document.createElement("select");
-            divform.appendChild(form);
-            form.appendChild(selected);
-            arrayDog.forEach(function (raca) {
-              const option = document.createElement("option");
-              option.value = "https://dog.ceo/api/breed/" + raca + "/images";
-              if (raca == "todos") {
-                option.value = "https://dog.ceo/api/breeds/image/random/50";
-              }
-              option.textContent = raca;
-              selected.appendChild(option);
-            });
+            // });
 
-            selected.addEventListener("change", function () {
-              const dog = selected.value;
-              console.log(dog);
-              divImages.innerHTML = "";
+            telaSearch(arrayImages);
 
-              iniciar(dog);
-            });
+            // console.log(arrayDog[5]);
+            // const divform = document.querySelector(".form");
+            // const form = document.createElement("form");
+            // const selected = document.createElement("select");
+            // divform.appendChild(form);
+            // form.appendChild(selected);
+            // arrayDog.forEach(function (raca) {
+            //   const option = document.createElement("option");
+            //   option.value = "https://dog.ceo/api/breed/" + raca + "/images";
+            //   if (raca == "todos") {
+            //     option.value = "https://dog.ceo/api/breeds/image/random/50";
+            //   }
+            //   option.textContent = raca;
+            //   selected.appendChild(option);
+            // });
+
+            // selected.addEventListener("change", function () {
+            //   const dog = selected.value;
+            //   console.log(dog);
+            //   divImages.innerHTML = "";
+
+            //   iniciar(dog);
+            // });
           })
           .catch(function (error) {
             console.log(error);
@@ -169,6 +162,50 @@
         divImages.innerHTML = "";
         //chamando a funçao com o url do inicio raças aleatorias
         iniciar(url);
+      });
+      function telaSearch(array) {
+        array.forEach((element) => {
+          const url = element;
+          const raca = element.split("/")[4];
+          const divElementos = document.createElement("div");
+          divElementos.className = "elementos";
+          const imagem = document.createElement("img");
+          const tituloEl = document.createElement("h3");
+          tituloEl.textContent = raca;
+          // imagem.src = element;
+          divImages.appendChild(divElementos);
+          divElementos.style.backgroundImage = `url(${url})`;
+          divElementos.style.height = "150px";
+          // divElementos.style.height = "35px";
+          divElementos.style.webkitBackgroundSize = "cover";
+          divElementos.style.backgroundPosition = "centro centro";
+          // divElementos.appendChild(imagem);
+          divElementos.appendChild(tituloEl);
+          const au = tituloEl.textContent.split("-");
+          const au1 = au[0];
+          divElementos.addEventListener("click", function () {
+            divButton.style.display = "block";
+            // console.log(au1);
+            const urlN = "https://dog.ceo/api/breed/" + au1 + "/images";
+            // console.log("object");
+            divImages.innerHTML = "";
+            iniciar(urlN);
+          });
+        });
+      }
+      buttono.addEventListener("click", function () {
+        console.log(arrayDog);
+      });
+
+      search.addEventListener("input", function (e) {
+        const newArray = arrayDog.map((el) =>
+          el.name.includes(e.target.value) ? el : ""
+        );
+        //   .filter(Boolean);
+        console.log(newArray);
+        // console.log(newArray);
+        divImages.innerHTML = "";
+        telaSearch(newArray);
       });
 
       // tarefa

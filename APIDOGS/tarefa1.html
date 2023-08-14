@@ -87,7 +87,7 @@
             const arrayImages = data.message;
             // console.log(arrayImages);
 
-            arrayDog.push(arrayImages);
+            arrayDog.push(...arrayImages);
 
             // arrayImages.forEach((element) => {
             //   const url = element;
@@ -117,29 +117,29 @@
 
             telaSearch(arrayImages);
 
-            // console.log(arrayDog[5]);
-            // const divform = document.querySelector(".form");
-            // const form = document.createElement("form");
-            // const selected = document.createElement("select");
-            // divform.appendChild(form);
-            // form.appendChild(selected);
-            // arrayDog.forEach(function (raca) {
-            //   const option = document.createElement("option");
-            //   option.value = "https://dog.ceo/api/breed/" + raca + "/images";
-            //   if (raca == "todos") {
-            //     option.value = "https://dog.ceo/api/breeds/image/random/50";
-            //   }
-            //   option.textContent = raca;
-            //   selected.appendChild(option);
-            // });
+            console.log(arrayDog[5]);
+            const divform = document.querySelector(".form");
+            const form = document.createElement("form");
+            const selected = document.createElement("select");
+            divform.appendChild(form);
+            form.appendChild(selected);
+            arrayDog.forEach(function (raca) {
+              const option = document.createElement("option");
+              option.value = "https://dog.ceo/api/breed/" + raca + "/images";
+              if (raca == "todos") {
+                option.value = "https://dog.ceo/api/breeds/image/random/50";
+              }
+              option.textContent = raca;
+              selected.appendChild(option);
+            });
 
-            // selected.addEventListener("change", function () {
-            //   const dog = selected.value;
-            //   console.log(dog);
-            //   divImages.innerHTML = "";
+            selected.addEventListener("change", function () {
+              const dog = selected.value;
+              console.log(dog);
+              divImages.innerHTML = "";
 
-            //   iniciar(dog);
-            // });
+              iniciar(dog);
+            });
           })
           .catch(function (error) {
             console.log(error);
@@ -177,8 +177,9 @@
           divElementos.style.backgroundImage = `url(${url})`;
           divElementos.style.height = "150px";
           // divElementos.style.height = "35px";
-          divElementos.style.webkitBackgroundSize = "cover";
-          divElementos.style.backgroundPosition = "centro centro";
+          divElementos.style.backgroundRepeat = "no-repeat";
+          divElementos.style.webkitBackgroundSize = "auto 110px";
+          divElementos.style.backgroundPosition = "center top";
           // divElementos.appendChild(imagem);
           divElementos.appendChild(tituloEl);
           const au = tituloEl.textContent.split("-");
@@ -198,8 +199,8 @@
       });
 
       search.addEventListener("input", function (e) {
-        const newArray = arrayDog.map((el) =>
-          el.name.includes(e.target.value) ? el : ""
+        const newArray = arrayDog[0].map((el) =>
+          el.includes(e.target.value) ? el : ""
         );
         //   .filter(Boolean);
         console.log(newArray);

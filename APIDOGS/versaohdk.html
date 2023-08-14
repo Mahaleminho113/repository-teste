@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog API</title>
+    <style>
+      /* ----------------------tags------------------ */
+      body {
+        margin: 0;
+      }
+      header {
+        position: sticky;
+        padding: 2em;
+        top: 0;
+        background-color: rgba(17, 49, 38, 0.973);
+      }
+
+      /*---------------- header contents -------------*/
+
+      .divLayoutInput {
+        display: flex;
+        gap: 1rem;
+      }
+      .divLayoutInput > select {
+        border-radius: 5px;
+        height: 53px;
+        padding: 10px;
+        width: fit-content;
+      }
+      /* search breed label poping out */
+      /* start */
+      .inputLayout {
+        border-radius: 5px;
+        height: 30px;
+        padding: 10px;
+        width: fit-content;
+      }
+      .inputLayout:focus {
+        outline-color: #278aa9;
+      }
+      .inputLayout:not(:placeholder-shown) + .labelLayout {
+        transform: translate(50%, 50%);
+        opacity: 1;
+      }
+      .labelLayout {
+        /* Position the label */
+        left: 8px;
+        position: absolute;
+        top: 0;
+        color: antiquewhite;
+        background-color: transparent;
+        /* Hide it by default */
+        opacity: 0;
+        transition: all 200ms;
+      }
+      /* search breed label poping out */
+      /* end */
+
+      /* -----------------main contents ---------------*/
+      .divDogList {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 3em;
+        gap: 5rem;
+      }
+      .divDogList > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        border-radius: 5px;
+        /* box-shadow: rgba(100, 111, 108, 0.2) 0px 7px 29px 0px; */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        background-color: azure;
+      }
+      .divDogList .dogImg {
+        max-height: 15rem;
+        border-radius: 5px;
+      }
+      .divDogList h2 {
+        padding: 1em;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="divDogList"></div>
+    </main>
+    <script>
+      //DOM access
+      const header = document.querySelector("header");
+      const divDogList = document.querySelector(".divDogList");
+      //creating
+      const divInputBreed = document.createElement("div");
+      const labelName = document.createElement("label");
+      const inputBreed = document.createElement("input");
+      const selectBreeds = document.createElement("select");
+      //setting
+      divInputBreed.className = "divLayoutInput";
+      inputBreed.className = "inputLayout";
+      labelName.className = "labelLayout";
+      labelName.textContent = "Dog Breed";
+      inputBreed.placeholder = "Enter dog breed";
+      inputBreed.name = "name";
+      //appending
+      divInputBreed.append(inputBreed, labelName, selectBreeds);
+      header.append(divInputBreed);
+      // inputBreed event and init() use this array
+      let arrayImgs = [];
+
+      //   const test = [];
+      //   const testFetch = ["link", "link", "link", "link", "link"];
+      //   test.push(testFetch);
+      //   console.log(...test);
+      //   console.log(testFetch);
+      //   [["link", "link", "link", "link", "link"]];
+
+      //sets select based on itens on screen
+      const setSelection = (arrayImgLinks) => {
+        if (arrayImgLinks != undefined) {
+          const arrayBreedClean = ["All"];
+          //   arrayImgLinks = ["link", "link", "link", "link", "link"]
+          arrayImgLinks.forEach((link) => {
+            arrayBreedClean.push(link.split("/")[4]);
+          });
+          //removing duplicates and sorting
+          const uniq = [...new Set(arrayBreedClean)].sort();
+          //populating select
+          uniq.forEach((breed) => {
+            const optionBreed = document.createElement("option");
+            optionBreed.textContent = breed;
+            selectBreeds.appendChild(optionBreed);
+          });
+        }
+      };
+      //initialising screen
+      const init = (arrayImgLinks, select) => {
+        if (arrayImgLinks != undefined) {
+          // if you receive select, it means that you do not need to call
+          select ? "" : setSelection(arrayImgLinks);
+          arrayImgLinks.forEach((dogLink) => {
+            const breed = dogLink.split("/")[4];
+            //creating
+            const divDog = document.createElement("div");
+            const dogImg = document.createElement("img");
+            const dogBreed = document.createElement("h2");
+            //setting
+            divDog.className = "divDog";
+            dogImg.className = "dogImg";
+            dogImg.src = dogLink;
+            dogBreed.textContent = breed;
+            //appending
+            divDog.append(dogImg, dogBreed);
+            divDogList.append(divDog);
+            //divDog event
+            divDog.addEventListener("click", async () => {
+              const newArray = await fetchDogBreed(breed.split("-")[0]);
+              //setting
+              divDogList.innerHTML = "";
+              selectBreeds.value = breed;
+              arrayImgs = newArray.message;
+              inputBreed.value = "";
+              //reloading screen and avoiding select being updated by using "1" as parameter
+              init(newArray.message, 1);
+            });
+          });
+        }
+      };
+      //search by breed event
+      inputBreed.addEventListener("input", (e) => {
+        const newArray = arrayImgs.filter((link) =>
+          link.includes(e.target.value)
+        );
+        //setting
+        divDogList.innerHTML = "";
+        //reloading screen
+        init(newArray, 1);
+      });
+      //select by breed event
+      selectBreeds.addEventListener("change", async () => {
+        if (selectBreeds.value != "All") {
+          //creating new array with an specifc breed
+          const newArray = await fetchDogBreed(
+            selectBreeds.value.split("-")[0]
+          );
+          //setting
+          inputBreed.value = "";
+          divDogList.innerHTML = "";
+          //reloading screen and avoiding select being updated by using "1" as parameter
+          init(newArray.message, 1);
+        } else {
+          inputBreed.value = "";
+          divDogList.innerHTML = "";
+          //if selected is equal to ALL reload random
+          fetchRandom();
+        }
+      });
+      //fetching data from dog.ceo
+      const fetchRandom = () => {
+        const url = "https://dog.ceo/api/breeds/image/random/50";
+        fetch(url)
+          .then((resp) => resp.json())
+          .then((data) => {
+            init(data.message);
+            arrayImgs = data.message;
+            console.log(data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      };
+      fetchRandom();
+      const fetchDogBreed = async (breed) => {
+        const url = `https://dog.ceo/api/breed/${breed}/images`;
+        const response = await fetch(url)
+          .then((resp) => resp.json())
+          .then((data) => data)
+          .catch(function (error) {
+            console.log(error);
+          });
+        return response;
+      };
+    </script>
+  </body>
+</html>

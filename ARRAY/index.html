@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- tarefa deixar palavras sem repetiçao  em um novo array ; 
+    criar funçao que passe a string , e vai passar como parametro uma letra 
+    qualquer e vai passar as palavras
+    que terminer com a letra definida como parametro; -->
+    <script>
+      // //Destructuring
+      // const array = [
+      //   {
+      //     name: "Matheus",
+      //     sex: "gay",
+      //   },
+      //   {
+      //     name: "Vinicius",
+      //     sex: "gay",
+      //   },
+      //   {
+      //     name: "Otacelio",
+      //     sex: "gay",
+      //   },
+      // ];
+      // array.forEach(({ name, sex }) => {
+      //   console.log(name);
+      //   console.log(sex);
+      // });
+
+      // const [Matheus, vinicius, otacelio] = array;
+      // console.log(Matheus);
+      // console.log(otacelio);
+
+      // const array1 = ["tata", "pepe", "too"];
+      // const array2 = ["tata", "pepe", "too"];
+
+      // const array3 = [];
+
+      // array1.forEach((element) => {
+      //   array3.push(element);
+      // });
+
+      // console.log(array3);
+
+      // const obj = {
+      //   name: "Matheus",
+      //   sex: "gay",
+      // };
+      // const { name, sex } = obj;
+      // const name1 = obj.name;
+      // const sex1 = obj.sex;
+
+      // console.log(name);
+      // console.log(sex);
+
+      // function teste() {
+      //   var ret = false;
+      //   try {
+      //     if (acontecer) {
+      //       throw new TypeError("oops aconteceu um erro");
+      //     }
+      //     ret = true;
+      //   } catch ({ name, message }) {
+      //     console.log(name); // "TypeError"
+      //     console.log(message); // "oops"
+      //   }
+      //   return ret;
+      // }
+
+      // var createCounter = function (n) {
+      //   var count = n;
+      //   return function () {
+      //     const current = count;
+      //     count++;
+      //     return current;
+      //   };
+      // };
+      // console.log(createCounter(10));
+
+      // var carro = function (n) {
+      //   return function () {
+      //     n = n + 1;
+      //     return n;
+      //   };
+      // };
+
+      // var cambio = carro(0);
+      // console.log(cambio());
+      // console.log(cambio());
+      // console.log(cambio());
+
+      const str = "the the cat cat sat on the mat on the other cat";
+      // minha const acima
+
+      //transformando minha const em array com as palavras separadas em strings ;
+      const ArrayDuplicados = splitComFor(str);
+
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(ArrayDuplicados);
+
+      ///////////////////////////////////////////////////////////////////////
+
+      // pegar as strings terminadas com a letra escolhida na const letra
+      const letra = "t";
+      function pegarPeloUltime(letra) {
+        const filtrado = ArrayDuplicados.filter(
+          (palavra) => palavra.slice(-1) == letra
+        );
+
+        return filtrado;
+      }
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(pegarPeloUltime(letra));
+
+      ///////////////////////////////////////////////////////////////////////////
+      // pegar as strings que comecam com a letra escolhida na const letra
+
+      function pegarPeloPrimeire(letra) {
+        const filtrado = ArrayDuplicados.filter(
+          (palavra) => palavra.charAt(0) == letra
+        );
+
+        return filtrado;
+      }
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(pegarPeloPrimeire(letra));
+
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      //Nossa function split feita com for para quebrar sempre que encontrar um espaco ;
+
+      function splitComFor(str) {
+        //novo array
+        array = [];
+        //nossa string que recebe valor apenas de letras é posta pro array sempre que encontra um espaço ;
+        //sempre que posta no array volta a ser uma string "";
+        palavra = "";
+        // loop para andar na string completa
+        for (let x = 0; x < str.length; x++) {
+          //condiçao que diz : se valor de x for diferente de um espaço " ";
+          if (str[x] != " ") {
+            //palavra recebe a soma do q tem em palavra + valor de x;
+            palavra = palavra + str[x];
+          }
+          //se valor de x for igual a um espaço;
+          else {
+            // Dê um push (coloque), no array o valor de palavra;
+            array.push(palavra);
+            // Limpe o valor  da palavra ;
+            palavra = "";
+          }
+        }
+        //aqui estamos dizendo que a funçao ira retornar o array ;
+        return array;
+      }
+      //chamando a funçao com o parametro str que é nossa constante que esta no inicio do nosso script
+      splitComFor(str);
+      //Descomente e veja se funcionou pelo seu console.log
+      //console.log(splitComFor(str));
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      //pegando valores unicos do array .Removendo as repetiçoes;
+      const semDuplicados = [...new Set(ArrayDuplicados)];
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(semDuplicados);
+
+      /////////////////////////////////////////////////////////////////////////////////
+
+      //array sem repetiçao com forEach;
+      const semDuplicados2 = [];
+      ArrayDuplicados.forEach((element) => {
+        if (!semDuplicados2.includes(element)) {
+          semDuplicados2.push(element);
+        }
+      });
+
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(semDuplicados2);
+
+      ///////////////////////////////////////////////////////////////////////
+
+      //funçao que ira retornar array com palavras que aparece no array  mais de 1 vez
+      //a funçao solicita uma string como parametro;
+      function acheRepetidos(string) {
+        //tranformando a string em um array com a nossa funçao splitComFor;
+        const array = splitComFor(string);
+        //array que vai receber as palavras ja sem repetiçao;
+        const newArray = [];
+
+        // pegando com o for
+        //determinando que "x" ira andar pelo nosso array ;
+        for (let x = 0; x < array.length; x++) {
+          //elemento sera a string que vai estar na posiçao x do array;
+          const element = array[x];
+          //let que recebera o valor de true se element for igual a elementoY ;
+          let existe = false;
+          //determinando que "y" ira andar pelo nosso newArray ;
+          for (let y = 0; y < newArray.length; y++) {
+            //elementoY sera a string que vai estar na posiçao x do array;
+            const elementY = newArray[y];
+            //condiçao que diz: se elementoY for igual a element;
+            if (elementY == element) {
+              //valor da let existe sera trocado para "true"
+              existe = true;
+              //diz para o loop de procurar no new array parar e
+              // pular para o proximo pois ja encontrou o element igual ;
+              break;
+            }
+          }
+          //condiçao que diz : se for false
+          if (!existe) {
+            // Dê um push (coloque), no newArray o valor do element;
+            newArray.push(element);
+          }
+        }
+        //aqui diz que a funçao retornara o newArray;
+        return newArray;
+
+        ///////////////////////////////////////////////////////////////////////////
+
+        //pegando sem repetiçoes com o forEach(Para cada)
+
+        array.forEach((element) => {
+          //com includes()Method
+          if (!newArray.includes(element)) {
+            newArray.push(element);
+          }
+          //com find() Method
+          const existe = newArray.find((porcaria) => porcaria == element);
+          if (existe == undefined) {
+            newArray.push(element);
+          }
+        });
+        return newArray;
+      }
+
+      //Descomente e veja se funcionou pelo seu console.log
+      // console.log(acheRepetidos(str));
+
+      //tarefa
+      //algoritos de ordenaçao
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="divCatList"></div>
+    </main>
+    <script>
+      //conectando com o documento
+      const header = document.querySelector("header");
+      const divCatList = document.querySelector(".divCatList");
+
+      //criando os elementos
+      const divInputBreed = document.createElement("div");
+      const InputBreed = document.createElement("input");
+      const divSelect = document.createElement("div");
+      const selectRacas = document.createElement("select");
+
+      //append dos elementos
+      header.append(divInputBreed, InputBreed, divSelect, selectRacas);
+      const url = "https://http.cat/404";
+      function iniciar(url) {
+        const myInit = {
+          method: "GET",
+          credentials: "same-origin",
+          headers: {
+            Accept: "image/jpeg",
+            Referer: "https://http.cat",
+          },
+
+          cache: "default",
+        };
+        fetch(url, { mode: "no-cors" }).then((resposta) =>
+          console.log(resposta)
+        );
+        // .then(function (imgR) {
+        //   console.log(imgR);
+        // });
+      }
+      iniciar(url);
+      //fazer a mesma tela dos dogs com os cats com search e select
+
+      //   //alterar
+      //   const mapTest = ["xicara", "xicara", "xicara", "xicara"].map(
+      //     (el) => (el = "garrafa")
+      //   );
+
+      //   console.log(mapTest);
+
+      //   // filtrar
+      //   const filterTest = ["xicara", "xicara", "garrafa", "xicara"].filter(
+      //     (xicara) => xicara == "xicara"
+      //   );
+      //   console.log(filterTest);
+
+      //   //encontrar
+      //   const findTest = ["garrafa", "garrafa", "xicara", "xicara"].find(
+      //     (elemento) => elemento == "xicara"
+      //   );
+      //   console.log(findTest);
+      //   //encontrar a posiçao
+      //   const findIndex = ["garrafa", "garrafa", "garrafa", "xicara"].findIndex(
+      //     (elemento) => elemento == "xicara"
+      //   );
+      //   console.log(findIndex);
+
+      //   //preenche com garrafa a partir da posição 1 = (garrafa,1)
+      //   const fillTest = ["xicara", "xicara", "xicara", "xicara"].fill(
+      //     "garrafa",
+      //     1
+      //   );
+      //   console.log(fillTest);
+
+      //   //procura alguma xicara se achar retorna true
+      //   const someTest = ["garrafa", "garrafa", "garrafa", "xicara"].some(
+      //     (elemento) => elemento == "xicara"
+      //   );
+      //   console.log(someTest);
+
+      //   //analisa se todos sao xicaras
+      //   const everyTest = ["xicara", "xicara", "xicara", "xicara"].every(
+      //     (elemento) => elemento != "xicara"
+      //   );
+      //   console.log(everyTest);
+    </script>
+  </body>
+</html>

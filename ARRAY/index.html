@@ -94,10 +94,43 @@
       // console.log(cambio());
 
       const str = "the the cat cat sat on the mat on the other cat";
+
       // minha const acima
 
       //transformando minha const em array com as palavras separadas em strings ;
       const ArrayDuplicados = splitComFor(str);
+      // console.log(ArrayDuplicados);
+
+      ////////////////////////////////////////////////////////
+
+      //meu array com as que não repetem
+      const arrayPalavras = [];
+      for (let i = 0; i < ArrayDuplicados.length; i++) {
+        //  const palavra = ArrayDuplicados[i];
+        if (contador(ArrayDuplicados, ArrayDuplicados[i]) < 2) {
+          arrayPalavras.push(ArrayDuplicados[i]);
+        }
+        // for (let x = i + 1; x < ArrayDuplicados.length; x++) {
+        //   const palavrax = ArrayDuplicados[x];
+        //   if (palavrax != palavra) {
+        //     arrayPalavras.push(palavrax);
+        //   }
+        // }
+      }
+      // console.log(arrayPalavras);
+
+      function contador(array, palavra) {
+        var q = 0;
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] == palavra) {
+            q++;
+            // if(q>1){
+            //   break
+            // }
+          }
+        }
+        return q;
+      }
 
       //Descomente e veja se funcionou pelo seu console.log
       // console.log(ArrayDuplicados);
@@ -106,28 +139,47 @@
 
       // pegar as strings terminadas com a letra escolhida na const letra
       const letra = "t";
-      function pegarPeloUltime(letra) {
-        const filtrado = ArrayDuplicados.filter(
-          (palavra) => palavra.slice(-1) == letra
-        );
+      function pegarPeloUltimo(array, letra) {
+        // const filtrado = array.filter((palavra) => palavra.slice(-1) == letra);
+        const filtrado = [];
+        for (let i = 0; i < array.length; i++) {
+          const palavra = array[i];
+          // console.log(palavra.length);
 
+          palavra[palavra.length - 1] == letra && !filtrado.includes(palavra)
+            ? filtrado.push(palavra)
+            : "";
+        }
         return filtrado;
       }
+
       //Descomente e veja se funcionou pelo seu console.log
-      // console.log(pegarPeloUltime(letra));
+      console.log(pegarPeloUltimo(ArrayDuplicados, letra));
+      // const palavraTeste = "tatu";
+      // console.log(palavraTeste.length); // = 4 = 4 letras = tatu = palavraTeste.length
+      // console.log(palavraTeste.length - 1); // 3 = palavraTeste.length -1
+      // console.log(palavraTeste[3]); // u
+      // console.log(palavraTeste[palavraTeste.length - 1]);
 
       ///////////////////////////////////////////////////////////////////////////
       // pegar as strings que comecam com a letra escolhida na const letra
 
-      function pegarPeloPrimeire(letra) {
-        const filtrado = ArrayDuplicados.filter(
-          (palavra) => palavra.charAt(0) == letra
-        );
+      function pegarPeloPrimeiro(array, letra) {
+        // const filtrado = array.filter((palavra) => palavra.charAt(0) == letra);
+
+        const filtrado = [];
+        for (let i = 0; i < array.length; i++) {
+          const palavra = array[i];
+
+          if (palavra[0] == letra && !filtrado.includes(palavra)) {
+            filtrado.push(palavra);
+          }
+        }
 
         return filtrado;
       }
       //Descomente e veja se funcionou pelo seu console.log
-      // console.log(pegarPeloPrimeire(letra));
+      console.log(pegarPeloPrimeiro(ArrayDuplicados, letra));
 
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -140,6 +192,7 @@
         //sempre que posta no array volta a ser uma string "";
         palavra = "";
         // loop para andar na string completa
+        //"the the cat cat sat on the mat on the other cat ";
         for (let x = 0; x < str.length; x++) {
           //condiçao que diz : se valor de x for diferente de um espaço " ";
           if (str[x] != " ") {
@@ -147,16 +200,26 @@
             palavra = palavra + str[x];
           }
           //se valor de x for igual a um espaço;
-          else {
-            // Dê um push (coloque), no array o valor de palavra;
+          else if (palavra != "") {
+            //
+
             array.push(palavra);
+
+            //else{
+            // // Dê um push (coloque), no array o valor de palavra;
+            // array.push(palavra);
             // Limpe o valor  da palavra ;
             palavra = "";
           }
         }
+        if (palavra != "") {
+          array.push(palavra);
+        }
+
         //aqui estamos dizendo que a funçao ira retornar o array ;
         return array;
       }
+
       //chamando a funçao com o parametro str que é nossa constante que esta no inicio do nosso script
       splitComFor(str);
       //Descomente e veja se funcionou pelo seu console.log
@@ -171,6 +234,7 @@
 
       /////////////////////////////////////////////////////////////////////////////////
 
+      //////////////////////////////////////////////////////////////////////////////
       //array sem repetiçao com forEach;
       const semDuplicados2 = [];
       ArrayDuplicados.forEach((element) => {

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .circulo {
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 50%;
+      }
+
+      .ponteiroHora {
+        margin-top: 70px;
+        width: 4px;
+        height: 80px;
+        background-color: black;
+        transform-origin: 50% 100%;
+        position: absolute;
+      }
+      .ponteiroMinuto {
+        margin-top: 60px;
+        width: 3px;
+        height: 90px;
+        background-color: black;
+        transform-origin: 50% 100%;
+        position: absolute;
+      }
+      .ponteiroSegundo {
+        margin-top: 20%;
+        width: 2px;
+        height: 100px;
+        background-color: red;
+        transform-origin: 50% 90%;
+        position: relative;
+      }
+
+      .circuloCentro {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid black;
+        background-color: black;
+        z-index: -1;
+        position: absolute;
+        align-self: center;
+      }
+      .qualquer {
+        width: 20px;
+        height: 280px;
+        font-size: 15px;
+        position: absolute;
+        align-self: center;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test"></div>
+
+    <!-- <div class="qualquer"></div> -->
+    <!-- <p class="segundos">0</p> -->
+    <script>
+      // const array = [1, 2, 3, 4, 5, 12, 7, 8, 9, 10, 11, 6];
+      // const segundoTela = document.querySelector(".segundos");
+      const divCirculo = document.createElement("div");
+      divCirculo.className = "circulo";
+      document.body.appendChild(divCirculo);
+      //criando ponteiros
+      const ponteiroHora = document.createElement("div");
+      const ponteiroMinuto = document.createElement("div");
+      const ponteiroSegundo = document.createElement("div");
+      const circuloCentro = document.createElement("div");
+
+      ponteiroHora.className = "ponteiroHora";
+      ponteiroMinuto.className = "ponteiroMinuto";
+      ponteiroSegundo.className = "ponteiroSegundo";
+      circuloCentro.className = "circuloCentro";
+
+      divCirculo.append(
+        ponteiroHora,
+        ponteiroMinuto,
+        ponteiroSegundo,
+        circuloCentro
+      );
+      //criando numeros
+      for (let x = 1; x < 13; x++) {
+        const number = document.createElement("div");
+        number.textContent = x;
+        number.className = "qualquer";
+        number.style.transform = "rotate(" + x * 30 + "deg)";
+
+        divCirculo.appendChild(number);
+      }
+
+      const relogio = setInterval(function tempo() {
+        const relogio = new Date();
+        hora = (relogio.getHours() * 60 + relogio.getMinutes()) / 2;
+        minutos = (relogio.getMinutes() * 60 + relogio.getSeconds()) / 10;
+        segundos = relogio.getSeconds() * 6;
+
+        // segundoTela.textContent = segundos;
+        ponteiroSegundo.style.transform = "rotate(" + segundos + "deg)";
+        ponteiroMinuto.style.transform = "rotate(" + minutos + "deg)";
+        ponteiroHora.style.transform = "rotate(" + hora + "deg)";
+        console.log(minutos);
+      }, 1000);
+
+      //colocar relogio digital dentro do analogico; despertador;adcionar os palitos em cada numeros;
+      //colocar a seta na ponta dos ponteiros
+    </script>
+  </body>
+</html>

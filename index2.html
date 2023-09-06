@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes animate {
+        0% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 0.7;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+      .pontos {
+        animation: animate 1s linear infinite;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+        color: red;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .relogio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 250px;
+        height: 450px;
+        border: 1px solid black;
+        border-radius: 30px;
+        background-color: white;
+        z-index: -1;
+      }
+      .circulo {
+        background-image: url("/relogio-matheus/fundo.png");
+        background-position: 10% 12%;
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        border-radius: 50%;
+        z-index: 3;
+      }
+      .centro {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid black;
+        background-color: red;
+        z-index: 1;
+        position: absolute;
+        align-self: center;
+      }
+      .ponteiroHora {
+        margin-top: 55px;
+        width: 4px;
+        height: 45px;
+        border-radius: 20px;
+        background-color: black;
+        transform-origin: 50% 100%;
+        position: absolute;
+        z-index: -1;
+      }
+      .ponteiroMinutos {
+        margin-top: 30px;
+        width: 3px;
+        height: 70px;
+        border-radius: 30px;
+        background-color: black;
+        transform-origin: 50% 100%;
+        position: absolute;
+        z-index: -1;
+      }
+      .ponteiroSegundos {
+        margin-top: 15%;
+        width: 2px;
+        height: 90px;
+        background-color: red;
+        border-radius: 50%;
+        transform-origin: 50% 78%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .pendulo {
+        display: flex;
+        align-items: end;
+        width: 15px;
+        height: 100px;
+        background-color: black;
+        z-index: 2;
+        border-radius: 26px;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+      }
+      .circuloP {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: black;
+        z-index: 2;
+      }
+      .penduloDiv {
+        gap: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        transform-origin: 50% 1%;
+        transition: 1s;
+        width: 50px;
+        height: 180px;
+        z-index: 2;
+      }
+
+      .relogioDigital {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        width: 150px;
+        height: 40px;
+        background-color: white;
+        border: 1px solid black;
+      }
+      .relogioDigital div {
+        align-items: center;
+        justify-content: baseline;
+        width: 20px;
+        height: 20px;
+        color: black;
+        font-size: 25px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relogio">
+      <div class="circulo">
+        <div class="centro"></div>
+        <div class="ponteiroHora"></div>
+        <div class="ponteiroMinutos"></div>
+        <div class="ponteiroSegundos"></div>
+      </div>
+      <div class="penduloDiv">
+        <div class="pendulo"></div>
+        <div class="circuloP"></div>
+      </div>
+      <div class="relogioDigital">
+        <div class="hora"></div>
+        <div class="pontos">:</div>
+        <div class="minutos"></div>
+        <div class="pontos">:</div>
+        <div class="segundos"></div>
+      </div>
+    </div>
+    <script>
+      const ponteiroHora = document.querySelector(".ponteiroHora");
+      const ponteiroMinutos = document.querySelector(".ponteiroMinutos");
+      const ponteiroSegundos = document.querySelector(".ponteiroSegundos");
+      const pendulo = document.querySelector(".penduloDiv");
+      const horaD = document.querySelector(".hora");
+      const minutosD = document.querySelector(".minutos");
+      const segundosD = document.querySelector(".segundos");
+
+      const relogio = setInterval(function tempo() {
+        const relogio = new Date();
+        hora = (relogio.getHours() * 60 + relogio.getMinutes()) / 2;
+        minutos = (relogio.getMinutes() * 60 + relogio.getSeconds()) / 10;
+        segundos = relogio.getSeconds() * 6;
+        segundosCerto = relogio.getSeconds();
+        HrsCerto = relogio.getHours();
+        minCerto = relogio.getMinutes();
+
+        horaD.textContent = HrsCerto;
+        if (horaD.textContent < 10) {
+          horaD.textContent = "0" + HrsCerto;
+        }
+        minutosD.textContent = minCerto;
+        if (minutosD.textContent < 10) {
+          minutosD.textContent = "0" + minCerto;
+        }
+        segundosD.textContent = segundosCerto;
+        if (segundosD.textContent < 10) {
+          segundosD.textContent = "0" + segundosCerto;
+        }
+        // console.log(decobrirPares(5));
+        console.log(segundosCerto);
+
+        if (decobrirPares(segundosCerto) == false) {
+          pendulo.style.transform = "rotate(-" + 10 + "deg)";
+        }
+
+        if (decobrirPares(segundosCerto) == true) {
+          pendulo.style.transform = "rotate(" + 10 + "deg)";
+        }
+
+        // pendulo.style.transform = "rotate(" + segundos + "deg)";
+        // segundoTela.textContent = segundos;
+        ponteiroSegundos.style.transform = "rotate(" + segundos + "deg)";
+
+        ponteiroMinutos.style.transform = "rotate(" + minutos + "deg)";
+        ponteiroHora.style.transform = "rotate(" + hora + "deg)";
+      }, 1000);
+
+      function decobrirPares(number) {
+        if (number % 2 == 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

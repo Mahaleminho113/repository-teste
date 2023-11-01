@@ -39,13 +39,18 @@
           imagen: "../9_meeting/new/hdk.html/imag_carros/celta.jpeg",
         },
       };
+      
+      //tranformando obj em array
       const keysobj=Object.keys(obj)
-      console.log(keysobj);
-       //MAIN FUNCTION 
-       function  iniciciar(array)  {
+     
+       //Funçao para iniciar ,colocar tudo no inicio tela.
+       function  iniciar(array)  {
+      
         const divCarro = document.createElement("div");
 
         array.forEach((criador) => {
+        
+        //Para cada item do array faça isto:
         const tituloEl = document.createElement("h1");
         const descricaoEl = document.createElement("p");
         const imagenEl = document.createElement("img");
@@ -58,55 +63,26 @@
         containerCarros.appendChild(divCarro);
      });
     };
-      iniciciar(keysobj);
+
+    //chamando a funçao com o array KEYSOBJ
+      iniciar(keysobj);
+
+      //ADICIONANDO EVENTO NO IMPUT
         campoPesquisa.addEventListener("input", function(e)  {
+
+        //CRIANDO UM ARRAY DE ACORDO COM O QUE ESTA SENDO DIGITADO
         const newCar = keysobj.filter((carro) => {
           if (carro.includes(e.target.value)) {
             return carro;
           }
         });
-        containerCarros.innerHTML = "";
-        iniciciar(newCar);
-        console.log(e.target.value);
-      });
-      // const arrayInput=[];
-      //My input event
-    //   campoPesquisa.addEventListener("input", function (event) {
-    //     console.log(arrayInput);
-    //     const filter = (array)=> array.filter((element) => element[0] == "p")
-          
-    //     const filter2 = (array)=> array.filter((element) => element[0] == "c")
-          
 
-    //     if (event.target.value[0] == "p") {
-    //    const  carro = keysObject.filter(car => car =='palio')
-    //    arrayInput.push(carro)
-    //     }
-    //     if(event.target.value[0] == "c"){
-    //         const carro=keysObject.filter(car => car[0]== "c")
-    //         arrayInput.pop()
-    //         arrayInput.push(carro)
-    //     }
-    
-    //     if(event.target.value[1] == "o"){
-    //         const carro=keysObject.filter(car => car[1] == "o")
-    //         arrayInput.pop()
-    //         arrayInput.push(carro)
-    //     }
-    //     if(event.target.value[1] == "e"){
-    //         const carro=keysObject.filter(car => car[1] == "e")
-    //         arrayInput.pop()
-    //         arrayInput.push(carro)
-    //     }
-    // });
-    // campoPesquisa.addEventListener('keydown', function(event) {
-    //     const key = event.key;
-    //     if (key === "Backspace" || key === "Delete") {
-    //        arrayInput.shift()
-    //         arrayInput.pop()
-    //     }})
-    //     console.log(carro);
-    //         console.log(arrayInput);
+        //LIMPANDO A TELA 
+        containerCarros.innerHTML = "";
+        
+        //INICIANDO A TELA DE ACORDO COM O ARRAY NEWCAR
+        iniciar(newCar);
+      });
     </script>
   </body>
 </htm

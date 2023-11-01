@@ -24,14 +24,6 @@
         width: 90%;
         display: grid;
         grid-template-columns: repeat(auto-fit, 180px);
-        /* display: flex;
-        flex-wrap: wrap; */
-        /* max-width: 600px; */
-        /* grid-auto-rows: 100px;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
-        /* display: grid;
-        grid-template-rows: 200px 200px;
-        grid-template-columns: auto auto auto auto; */
         gap: 20px;
       }
       .elementos {
@@ -94,7 +86,6 @@
       function somar(Pnum, Snum) {
         return Pnum + Snum;
       }
-      console.log(somar(5, 7));
 
       const obj = {
         message: [
@@ -124,10 +115,9 @@
           .then((resp) => resp.json())
           .then(function (imagensR) {
             const arrayImages = imagensR.message;
-            // console.log(imagensR);
+            console.log(arrayImages);
             arrayImages.forEach((element) => {
               const raca = element.split("/")[4];
-              // racas.push(raca);
               const divElementos = document.createElement("div");
               divElementos.className = "elementos";
               const imagem = document.createElement("img");
@@ -144,9 +134,7 @@
               // // console.log(au1);
 
               divElementos.addEventListener("click", function () {
-                console.log(tituloEl.textContent.split("-")[0]);
                 divButton.style.display = "block";
-                // console.log(au1);
                 const urlN =
                   "https://dog.ceo/api/breed/" +
                   tituloEl.textContent.split("-")[0] +
@@ -165,7 +153,7 @@
       //criando meu botão voltar como imagem
       const btn_voltar = document.createElement("img");
       // endereço da minha imagem
-      btn_voltar.src = "../11_meeting/seta.png";
+      btn_voltar.src = "./seta.png";
       //classe da minha imagem
       btn_voltar.className = "btn_voltar";
       //append da minha imagem na div de classe button
@@ -176,12 +164,13 @@
         divButton.style.display = "none";
         //limpando meu HTml
         divImages.innerHTML = "";
+
         //chamando a funçao com o url do inicio raças aleatorias
         iniciar(url);
       });
 
       const arrayRacas = [
-        "todos",
+        "Todos",
         "dingo",
         "vizsla",
         "papillon",
@@ -196,10 +185,11 @@
       const selected = document.createElement("select");
       divform.appendChild(form);
       form.appendChild(selected);
+
       arrayRacas.forEach(function (raca) {
         const option = document.createElement("option");
         option.value = "https://dog.ceo/api/breed/" + raca + "/images";
-        if (raca == "todos") {
+        if (raca == "Todos") {
           option.value = "https://dog.ceo/api/breeds/image/random/50";
         }
         option.textContent = raca;
@@ -207,8 +197,9 @@
       });
 
       selected.addEventListener("change", function () {
+        divButton.style.display = "block";
+
         const dog = selected.value;
-        console.log(dog);
         divImages.innerHTML = "";
         iniciar(dog);
       });

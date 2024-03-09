@@ -1,0 +1,56 @@
+:root {
+  --green: #00ff00;
+  --white: #ffffff;
+  --black: black;
+}
+
+* {
+  color: var(--fontColor);
+  font-family: helvetica;
+}
+
+body {
+  background: var(--bg);
+}
+
+ul {
+  font-family: helvetica;
+}
+
+li {
+  list-style: circle;
+}
+
+.list {
+  list-style: square;
+}
+
+.tema-claro {
+  --bg: var(--green);
+  --fontColor: var(--black);
+  --botaoBg: var(--black);
+  --botaoFontColor: var(--white);
+}
+
+.tema-escuro {
+  --bg: var(--black);
+  --fontColor: var(--green);
+  --botaoBg: var(--white);
+  --botaoFontColor: var(--black);
+}
+
+.botao {
+  position: absolute;
+  top: 20px;
+  left: 250px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  color: var(--botaoFontColor);
+  background-color: var(--botaoBg);
+}
+
+.botao:focus {
+  outline-style: none;
+}

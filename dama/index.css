@@ -65,14 +65,22 @@ body {
 .pecasPretas {
   border-radius: 100%;
   background-color: black;
-  border: 5px solid white;
+  border: 5px solid black;
 }
 
 .pecasBrancas {
   border-radius: 100%;
   background-color: white;
-  border: 5px solid black;
+  border: 5px solid white;
 }
 .dragging {
   opacity: 0, 5;
+}
+
+.jogador1 {
+  padding-right: 80%;
+}
+
+.jogador2 {
+  padding-right: 80%;
 }

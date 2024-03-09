@@ -1,7 +1,7 @@
 const body = document.querySelector("body");
 
-//array Determinar cores do tabuleiro
-const myArray = [
+//array Determinar casas verdes do tabuleiro
+const casaVerde = [
   1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23, 26, 28, 30, 32, 33, 35, 37, 39,
   42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64,
 ];
@@ -26,7 +26,6 @@ for (x = 1; x <= 64; x++) {
   const casa = document.createElement("div");
   casa.className = "casa";
   tabuleiro.appendChild(casa);
-  // casa.textContent = x;
 
   //const e class das Pecas e acrescentando pecas em casa
   const pecas = document.createElement("div");
@@ -34,7 +33,7 @@ for (x = 1; x <= 64; x++) {
   pecas.draggable = "true";
 
   //se "x" estiver incluido no array
-  if (myArray.includes(x)) {
+  if (casaVerde.includes(x)) {
     //cor de fundo sera verde
     casa.style.backgroundColor = "green";
 
@@ -59,20 +58,28 @@ for (x = 1; x <= 64; x++) {
       //pecas recebe nome da classe como "pecasBrancas"
       pecas.classList.add("pecasBrancas");
     }
+
+    // casa.addEventListener("mousedown", function (e) {
+    //   switch (e.buttons) {
+    //     case 1:
+    //       pecas.remove();
+    //       break;
+
+    //     case 2:
+    //       casa.append(pecas);
+    //       break;
+    //   }
+    // });
   }
 
-  // casa.addEventListener("mousedown", function (e) {
-  //   switch (e.buttons) {
-  //     case 1:
-  //       pecas.remove();
-  //       break;
-
-  //     case 2:
-  //       casa.append(pecas);
-  //       break;
-  //   }
-  // });
+  /////////////////////// informocaoes sobre item arrastavel /////////////////
+  //draggable="arrastável";
+  //dragover="arraste sobre";
+  //dragging="arrastando";
+  //drag end="arrastar final";
+  //drag start="drag start";
 }
+
 //criando constante casas atraves de todas div com classe chamada "casa"
 const casas = document.querySelectorAll(".casa");
 
@@ -87,36 +94,31 @@ document.addEventListener("dragend", (e) => {
 });
 
 //para cada casa
-casas.forEach((item) => {
+casas.forEach((casa) => {
   //adicionando o evento "dragover" que identidfica quando o item esta por cima desta casa
-  item.addEventListener("dragover", (e) => {
+  casa.addEventListener("dragover", (e) => {
     //const com o item que esta sendo movimentado
     const dragging = document.querySelector(".dragging");
-    //chamando funçao que vai pegar a nova posiçao deste item
-    const aplicarDepois = obterNovaPosiçao(item);
+    //const que vai pegar todos os item q nao estao sendo movimentados
+    const pecas = casa.querySelectorAll(".peca:not(.dragging)");
 
-    if (aplicarDepois) {
-      aplicarDepois.insertAdjacentElement("afterend", dragging);
-    } else {
-      item.prepend(dragging);
-    }
+    casa.append(dragging);
   });
 });
 
 //funcao para obter nova posiçao
-function obterNovaPosiçao(casas, item) {
-  //const que vai pegar todos os item q nao estao sendo movimentados
-  const pecas = casas.querySelectorAll(".peca:not(.dragging)");
+// function obterNovaPosiçao(casa) {
+//   //const que vai pegar todos os item q nao estao sendo movimentados
+//   // const pecas = casa.querySelectorAll(".peca:not(.dragging)");
 
-  let result;
+//   let result;
 
-  // //pegando altura e posicao do item
-  // for (let refer_peca of pecas) {
-  //   const box = refer_peca.getBoundingClientRect();
-  //   const boxCenterY = box.Y + box.height;
+//   // //pegando altura e posicao do item
+//   // for (let refer_peca of pecas) {
+//   //   const box = refer_peca.getBoundingClientRect();
+//   //   const boxCenterY = box.Y + box.height;
 
-  // if (posY >= boxCenterY) {
-  //   result = refer_peca;
-  // }
-  return result;
-}
+//   // if (posY >= boxCenterY) {
+//   //   result = refer_peca;
+//   // }
+// }

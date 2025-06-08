@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.divTabuleiro {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 400px;
+  height: 400px;
+  background-color: black;
+  margin-top: 45px;
+  gap: 10px;
+  justify-items: center;
+  align-content: center;
+}
+
+.casas {
+  width: 40px;
+  height: 40px;
+  border: 0%;
+
+  background-color: white;
+}

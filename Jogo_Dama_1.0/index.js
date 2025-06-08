@@ -1,7 +1,7 @@
 const body = document.querySelector("body");
 
-//array Determinar casas verdes do tabuleiro
-const casaVerde = [
+//array Determinar casas Pretas do tabuleiro
+const casaPreta = [
   1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23, 26, 28, 30, 32, 33, 35, 37, 39,
   42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64,
 ];
@@ -13,7 +13,7 @@ const arrayPecas = [
 ];
 
 //array determinar casa onde nao tera pecas
-const arraySemPecas = [25, 26, 27];
+// const arraySemPecas = [25, 26, 27];
 
 //crinado div tabuleiro ,adicionando classe e acrescentando tabuleiro ao body
 const tabuleiro = document.createElement("div");
@@ -33,9 +33,9 @@ for (x = 1; x <= 64; x++) {
   pecas.draggable = "true";
 
   //se "x" estiver incluido no array
-  if (casaVerde.includes(x)) {
-    //cor de fundo sera verde
-    casa.style.backgroundColor = "green";
+  if (casaPreta.includes(x)) {
+    //cor de fundo sera Preto
+    casa.style.backgroundColor = "black";
 
     //se "x" nao estiver incluido
   } else {
@@ -83,7 +83,7 @@ for (x = 1; x <= 64; x++) {
 //criando constante casas atraves de todas div com classe chamada "casa"
 const casas = document.querySelectorAll(".casa");
 
-//evento que atribui a classse  "dragging" quando estiver sendo arrastado
+//evento que atribui a classe  "dragging" quando estiver sendo arrastado
 document.addEventListener("dragstart", (e) => {
   e.target.classList.add("dragging");
 });

@@ -162,7 +162,7 @@ button1.addEventListener("click", function () {
       } else if (input.value == secretoArray1) {
         alert("Parabéns! Você Acertou!");
         arrayTentativa.length = 0;
-        contadorTentativa = 3;
+        // contadorTentativa = 3;
         tentativas.textContent = "Tentativas: " + contadorTentativa;
         input.value = "";
       } else {

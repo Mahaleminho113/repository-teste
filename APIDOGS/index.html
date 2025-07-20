@@ -6,38 +6,40 @@
     <title>Document</title>
     <style>
       body {
-        position: relative;
-        background-color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        background-color: black;
+      }
+      img {
+        /* border: 4px solid black; */
+        width: 90%;
+        height: 90%;
+        border-radius: 22%;
       }
 
-      img {
-        border: 1px solid black;
-        width: 150px;
+      h3 {
+        margin: 0%;
+        width: 100px;
+        text-align: center;
+        color: darkgrey;
       }
 
       .images {
-        padding-top: 100px;
-        width: 90%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, 180px);
-        gap: 20px;
-      }
-      .elementos {
-        display: flex;
-        padding-top: 20px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        border: 3px solid white;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
       }
 
-      .elementos:hover {
-        border: 3px solid black;
+      .elementos {
+        border-radius: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0%;
+        border: 0%;
       }
+
+      /* .elementos:hover {
+        border: 3px solid black;
+      } */
       .button {
         padding-right: 95%;
         padding-top: 3px;
@@ -76,46 +78,19 @@
   <body>
     <!-- minhas divs -->
 
-    <div class="input">
+    <!-- <div class="input">
       <div class="button"></div>
       <div class="text">Filtre por Raça:</div>
       <div class="form"></div>
-    </div>
+    </div> -->
     <div class="images"></div>
     <script>
-      function somar(Pnum, Snum) {
-        return Pnum + Snum;
-      }
-
-      const obj = {
-        message: [
-          "https://images.dog.ceo/breeds/lhasa/n02098413_20304.jpg",
-          "https://images.dog.ceo/breeds/terrier-silky/n02097658_955.jpg",
-          "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_332.jpg",
-          "https://images.dog.ceo/breeds/rottweiler/n02106550_1889.jpg",
-          "https://images.dog.ceo/breeds/husky/n02110185_11635.jpg",
-          "https://images.dog.ceo/breeds/redbone/n02090379_4632.jpg",
-          "https://images.dog.ceo/breeds/pointer-germanlonghair/hans3.jpg",
-        ],
-        status: "success",
-        status: "success",
-        status: "success",
-        status: "success",
-        status: "success",
-      };
-      //minhas constates
-      const divButton = document.querySelector(".button");
-      const divImages = document.querySelector(".images");
-      const url = "https://dog.ceo/api/breeds/image/random/50";
-      const arrayDog = [];
-
       //minha function Iniciar
       function iniciar(url) {
         fetch(url)
           .then((resp) => resp.json())
           .then(function (imagensR) {
             const arrayImages = imagensR.message;
-            console.log(arrayImages);
             arrayImages.forEach((element) => {
               const raca = element.split("/")[4];
               const divElementos = document.createElement("div");
@@ -128,20 +103,13 @@
               divElementos.appendChild(imagem);
               divElementos.appendChild(tituloEl);
 
-              // const au = tituloEl.textContent.split("-");
-              // const au1 = au[0];
-
-              // // console.log(au1);
-
-              divElementos.addEventListener("click", function () {
-                divButton.style.display = "block";
-                const urlN =
-                  "https://dog.ceo/api/breed/" +
-                  tituloEl.textContent.split("-")[0] +
-                  "/images";
-                console.log("object");
+              imagem.addEventListener("click", function () {
                 divImages.innerHTML = "";
-                iniciar(urlN);
+                url_raca =
+                  "http://127.0.0.1:5000/api/racas/" +
+                  tituloEl.textContent.split("-")[0] +
+                  "/imagens";
+                iniciar(url_raca);
               });
             });
           })
@@ -149,7 +117,41 @@
             console.log(error);
           });
       }
-      iniciar(url);
+      // const divButton = document.querySelector(".button");
+      const divImages = document.querySelector(".images");
+      const url = "http://127.0.0.1:5000/api/racas/imagens/aleatorias/10";
+      const arrayDog = [];
+      const input = document.createElement("input");
+      const btn = document.createElement("button");
+      input.placeholder = "digite um numero de imagens aleatorios esperado";
+      btn.textContent = "enviar";
+      document.body.appendChild(input);
+      document.body.appendChild(btn);
+
+      btn.addEventListener("click", function () {
+        console.log(input.value);
+        url_picado = url.split("/");
+        quantidade_imgs = url_picado.slice(0, -1).join("/");
+        if (!isNaN(input.value)) {
+          let url_teste = [];
+          a = input.value;
+          b = quantidade_imgs + "/" + a;
+          c = [];
+          url_teste.push(b);
+
+          // url = b;
+          iniciar(url_teste[0]);
+
+          input.style.display = "none";
+          btn.style.display = "none";
+
+          console.log(url_teste);
+        } else {
+          console.log("nao é numero");
+        }
+        input.value = "";
+      });
+
       //criando meu botão voltar como imagem
       const btn_voltar = document.createElement("img");
       // endereço da minha imagem
@@ -166,7 +168,7 @@
         divImages.innerHTML = "";
 
         //chamando a funçao com o url do inicio raças aleatorias
-        iniciar(url);
+        // iniciar(url);
       });
 
       const arrayRacas = [
@@ -179,7 +181,7 @@
         "puggle",
       ];
 
-      const select = document.querySelector("#options");
+      // const select = document.querySelector("#options");
       const divform = document.querySelector(".form");
       const form = document.createElement("form");
       const selected = document.createElement("select");
@@ -189,11 +191,12 @@
       arrayRacas.forEach(function (raca) {
         const option = document.createElement("option");
         option.value = "https://dog.ceo/api/breed/" + raca + "/images";
-        if (raca == "Todos") {
+        if (raca === "Todos") {
           option.value = "https://dog.ceo/api/breeds/image/random/50";
+        } else {
+          option.textContent = raca;
+          selected.appendChild(option);
         }
-        option.textContent = raca;
-        selected.appendChild(option);
       });
 
       selected.addEventListener("change", function () {
